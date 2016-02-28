@@ -12,11 +12,11 @@ module.exports = {
 
     description : { type: 'string' },
 
-    selections : { type: 'array' }
+    sections : { type: 'array' }
 
     //Belongs to project
 
     // Has many papercuts
-    
+
   }
 };

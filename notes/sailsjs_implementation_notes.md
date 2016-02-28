@@ -184,7 +184,7 @@ Has and belong to many transcripts
 
 #### Paperedit
 ```bash
-sails generate model paperedit name:string description:string selections:array
+sails generate model paperedit name:string description:string sections:array
 ```
 
 ```javascript
