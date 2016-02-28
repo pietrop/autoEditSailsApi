@@ -29,10 +29,11 @@ module.exports = {
 
   //Has One Transcript
   transcript:{
-     model: 'transcript'
+     collection: 'transcript',
+     via: 'hmedia'
   },
   // Belongs to Project
-  media: {
+  clip: {
     model: 'project'
   }
 

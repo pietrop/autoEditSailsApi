@@ -1,5 +1,11 @@
 # API end points
 
+for authenticated user
+
+## Project
+### Create
+
+### Read
 Project index
 ```json
 /project
@@ -10,6 +16,19 @@ Project show
 /project/:projectId
 ```
 
+### Update
+
+
+### Delete
+
+
+---
+
+## Media
+### Create
+
+### Read
+
 Project's Medias index
 ```json
 /project/:projectId/medias
@@ -19,13 +38,27 @@ Project's Media show
 ```json
 /project/:projectId/medias/:mediaId
 ```
+### Update
+
+
+### Delete
+
+---
+## Transcript
+
+### Create
+
+### Read
 
 Project's transcript show
 ```json
 /project/:projectId/medias/:mediaId/transcripts/:transcriptID
 ```
 
-note, no transcript index
+### Update
+
+
+### Delete
 
 
 TODO: add CRUD

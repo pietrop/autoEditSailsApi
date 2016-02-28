@@ -16,21 +16,17 @@ module.exports = {
     date : { type: 'date' },
 
     // Has many Users
-   users: {
+   user: {
      collection: 'user',
      via: 'account'
    },
    //Has many medias
-   medias: {
+   media: {
      collection: 'media',
-     via: 'media'
-   }
+     via: 'clip'
+   },
+
    //Has many Transcripts through Medias
-  //  transcripts:{
-  //     collection: 'transcript',
-  //     via: 'media',
-  //     through: 'transcriptions'
-  //   }
 
   // Has many Annotations through Transcripts
 

@@ -18,8 +18,9 @@ module.exports = {
     // Has and belong to many speakers
 
     //belongs to media
-    owner:{
-      model: 'media'
+    hmedia:{
+      model: 'media',
+      unique: true
     }
 
   }

@@ -9,24 +9,19 @@ module.exports = {
 	hi: function (req, res) {
 	 return res.send("Hi there!");
  },
+
+ /**
+ * Returns transcription from route`get /project/:projectId/media/:mediaId/transcript`
+ */
  show: function (req, res) {
-	// return res.send("Project: "
-	// +req.param('projectId')
-	// +"  Media"
-	// +req.param('mediaId')
-	// +" Transcript"
-	// +req.param('transcriptID'));
 
-	//TODO: a query to fetch nested Project with ID, Media with ID, and transcript with Id. to then return transcript object as json.
-
-	return res.json(
-		{
-			"projectId":req.param('projectId'),
-			"mediaId":req.param('mediaId'),
-			"transcriptId":req.param('transcriptID')
-		}
-	);
-
+	Media.findOne(req.param('mediaId'))
+			.populate('transcript')
+			.exec(function(err, m){
+				return res.json(
+					 m.transcript[0]
+				);
+			});
 
 }
 

@@ -38,11 +38,12 @@ module.exports.routes = {
   'get /hi': 'TranscriptController.hi',
 
   //Project Media Transcript
-  'get /project/:projectId/medias/:mediaId/transcripts/:transcriptID': {
+  'get /project/:projectId/media/:mediaId/transcript': {
     controller: 'TranscriptController',
     action: 'show',
     skipAssets: true
-  }
+  },
+
 
   /***************************************************************************
   *                                                                          *
