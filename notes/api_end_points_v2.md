@@ -161,3 +161,9 @@ Problem: time consuming to save/send whole paperedit at every change (ie new pap
 <!-- ```
 put /user/:userId/project/:projectId/paperedit/:papereditId/section/:id
 ``` -->
+
+
+
+# Up Next(to find out)
+-[ ] Modify blueprint (to what extent is possibly)
+-[ ] policy Authentication
