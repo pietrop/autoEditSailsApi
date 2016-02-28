@@ -17,8 +17,7 @@ module.exports = {
 
     // Has many Users
    user: {
-     collection: 'user',
-     via: 'account'
+     model: 'user'
    },
    //Has many medias
    media: {

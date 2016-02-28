@@ -48,4 +48,18 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+  // TranscriptController: {
+  //   'find': false,
+  //   'create': false,
+  //   'update': false,
+  //   'destroy': false,
+  //   'populate': false,
+  //   'add': false,
+  //   'remove': false,
+  //   '*': false
+  // }
+
+
+
+
 };

@@ -50,6 +50,13 @@ Delete
 delete /user/:userId/project/:projectId
 ```
 
+<!-- add other users to a project
+```
+put api/v1/user/:userId/project/:projectId
+```
+privilidges?
+-->
+
 ## Create new Project
 Create
 ```

@@ -17,8 +17,9 @@ module.exports = {
   password : { type: 'string' },
 
   //  Belongs to Project
-  account: {
-    model: 'project'
+  project: {
+    collection: 'project',
+    via: 'user'//attribute
   }
 
 

@@ -42,7 +42,7 @@ module.exports.routes = {
     controller: 'TranscriptController',
     action: 'show',
     skipAssets: true
-  },
+  }
 
 
   /***************************************************************************
