@@ -17,7 +17,7 @@
  */
 
 
-module.exports.policies = {
+ module.exports.policies = {
 
   /***************************************************************************
   *                                                                          *
@@ -48,4 +48,90 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+
+  AnnotationController: {
+    find: false,
+    findOne: false,
+    create: false,
+    update: false,
+    destroy: false,
+    populate: false,
+    add: false,
+    remove: false,
+    *: false
+  },
+
+  MediaController: {
+    find: false,
+    findOne: false,
+    create: false,
+    update: false,
+    destroy: false,
+    populate: false,
+    add: false,
+    remove: false,
+    *: false
+  },
+
+  PapercutController: {
+    find: false,
+    findOne: false,
+    create: false,
+    update: false,
+    destroy: false,
+    populate: false,
+    add: false,
+    remove: false,
+    *: false
+  },
+
+  ProjectController: {
+    find: false,
+    findOne: false,
+    create: false,
+    update: false,
+    destroy: false,
+    populate: false,
+    add: false,
+    remove: false,
+    *: false
+  },
+
+  SpeakerController: {
+    find: false,
+    findOne: false,
+    create: false,
+    update: false,
+    destroy: false,
+    populate: false,
+    add: false,
+    remove: false,
+    *: false
+  },
+
+  TranscriptController: {
+    find: false,
+    findOne: false,
+    create: false,
+    update: false,
+    destroy: false,
+    populate: false,
+    add: false,
+    remove: false,
+    *: false
+  },
+
+  UserController: {
+    find: false,
+    findOne: false,
+    create: false,
+    update: false,
+    destroy: false,
+    populate: false,
+    add: false,
+    remove: false,
+    *: false
+  }
+
 };
