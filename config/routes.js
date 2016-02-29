@@ -176,7 +176,7 @@ module.exports.routes = {
     controller: 'PapereditController',
     action: 'find',
     skipAssets: true
-  },
+  }
 
   /***************************************************************************
   *                                                                          *
