@@ -46,9 +46,17 @@ module.exports.routes = {
 
   'get /user/:userId/account/:accountId/media' : {
     controller: 'ProjectController',
-    action: 'show',
+    action: 'getMedia',
+    skipAssets: true
+  },
+
+   'get /user/:userId/account/:accountId/user' : {
+    controller: 'ProjectController',
+    action: 'getUsers',
     skipAssets: true
   }
+
+
 
 // /*****************
 // *                *

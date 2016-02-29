@@ -6,14 +6,26 @@
  */
 
 module.exports = {
-	show:  function (req, res) {
+	getMedia:  function (req, res) {
 
-	Media.find().populate('transcript')
+	Media.find().populate('clip')
+			.exec(function(err, m){
+				return res.json(m);
+				
+			});
+
+},
+	getUsers:  function (req, res) {
+
+	User.find().populate('account')
 			.exec(function(err, m){
 				return res.json(m);
 				
 			});
 
 }
+
+
+
 };
 
