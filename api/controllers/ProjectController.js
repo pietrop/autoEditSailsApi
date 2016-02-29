@@ -6,6 +6,14 @@
  */
 
 module.exports = {
-	
+	show:  function (req, res) {
+
+	Media.find().populate('transcript')
+			.exec(function(err, m){
+				return res.json(m);
+				
+			});
+
+}
 };
 

@@ -32,10 +32,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
-  'get /hi': 'TranscriptController.hi',
+//   '/': {
+//     view: 'homepage'
+//   },
+//   'get /hi': 'TranscriptController.hi',
 
   //Project Media Transcript
   'get /project/:projectId/media/:mediaId/transcript': {
@@ -44,139 +44,145 @@ module.exports.routes = {
     skipAssets: true
   },
 
-/*****************
-*                *
-* Create User    *
-*                *
-*****************/
-  'post /user' : {
-    controller: 'UserController',
-    action: 'create',
-    skipAssets: true
-  },
-
-/*****************
-*                *
-* Sign up User   *
-*                *
-*****************/
-  'post /user' : {
-    controller: 'UserController',
-    action: 'findOne',
-    skipAssets: true
-  },
-
-/**********************
-*                     *
-* User account Read   *
-*                     *
-***********************/
-'get /user/:userId' : {
-    controller: 'UserController',
-    action: 'find',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* User account Update   *
-*                       *
-*************************/
-'put /user/:userId' : {
-    controller: 'UserController',
-    action: 'update',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* User account Delete   *
-*                       *
-*************************/
-'delete /user/:userId' : {
-    controller: 'UserController',
-    action: 'update',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* Project List Read     *
-*                       *
-*************************/
-'get /user/:userId/project' : {
+  'get /user/:userId/account/:accountId/media' : {
     controller: 'ProjectController',
-    action: 'find',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* Project Show Single   *
-*                       *
-*************************/
-'get /user/:userId/project/:projectId' : {
-    controller: 'ProjectController',
-    action: 'findOne',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* Project Show Update   *
-*                       *
-*************************/
-'put /user/:userId/project/:projectId': {
-    controller: 'ProjectController',
-    action: 'findOne',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* Project Delete Single *
-*                       *
-*************************/
-'delete /user/:userId/project/:projectId' : {
-    controller: 'ProjectController',
-    action: 'delete',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* Project Create new    *
-*                       *
-*************************/
-'post /user/:userId/project'  : {
-    controller: 'ProjectController',
-    action: 'create',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* Project Panel         *
-* Transcript - list     *
-*                       *
-*************************/
-'get /user/:userId/project/:projectId/transcript': {
-    controller: 'TranscriptController',
-    action: 'find',
-    skipAssets: true
-  },
-
-/************************
-*                       *
-* Paperedit             *
-* list                  *
-*                       *
-*************************/
-'get /user/:userId/project/:projectId/paperedit' : {
-    controller: 'PapereditController',
-    action: 'find',
+    action: 'show',
     skipAssets: true
   }
+
+// /*****************
+// *                *
+// * Create User    *
+// *                *
+// *****************/
+//   'post /user' : {
+//     controller: 'UserController',
+//     action: 'create',
+//     skipAssets: true
+//   },
+
+// /*****************
+// *                *
+// * Sign up User   *
+// *                *
+// *****************/
+//   'post /user' : {
+//     controller: 'UserController',
+//     action: 'findOne',
+//     skipAssets: true
+//   },
+
+// /**********************
+// *                     *
+// * User account Read   *
+// *                     *
+// ***********************/
+// 'get /user/:userId' : {
+//     controller: 'UserController',
+//     action: 'find',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * User account Update   *
+// *                       *
+// *************************/
+// 'put /user/:userId' : {
+//     controller: 'UserController',
+//     action: 'update',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * User account Delete   *
+// *                       *
+// *************************/
+// 'delete /user/:userId' : {
+//     controller: 'UserController',
+//     action: 'update',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * Project List Read     *
+// *                       *
+// *************************/
+// 'get /user/:userId/project' : {
+//     controller: 'ProjectController',
+//     action: 'find',
+//     skipAssets: true
+//   },
+
+// ***********************
+// *                       *
+// * Project Show Single   *
+// *                       *
+// ************************
+// 'get /user/:userId/project/:projectId' : {
+//     controller: 'ProjectController',
+//     action: 'findOne',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * Project Show Update   *
+// *                       *
+// *************************/
+// 'put /user/:userId/project/:projectId': {
+//     controller: 'ProjectController',
+//     action: 'findOne',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * Project Delete Single *
+// *                       *
+// *************************/
+// 'delete /user/:userId/project/:projectId' : {
+//     controller: 'ProjectController',
+//     action: 'delete',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * Project Create new    *
+// *                       *
+// *************************/
+// 'post /user/:userId/project'  : {
+//     controller: 'ProjectController',
+//     action: 'create',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * Project Panel         *
+// * Transcript - list     *
+// *                       *
+// *************************/
+// 'get /user/:userId/project/:projectId/transcript': {
+//     controller: 'TranscriptController',
+//     action: 'find',
+//     skipAssets: true
+//   },
+
+// /************************
+// *                       *
+// * Paperedit             *
+// * list                  *
+// *                       *
+// *************************/
+// 'get /user/:userId/project/:projectId/paperedit' : {
+//     controller: 'PapereditController',
+//     action: 'find',
+//     skipAssets: true
+//   }
 
   /***************************************************************************
   *                                                                          *
