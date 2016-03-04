@@ -1,6 +1,10 @@
 var spawn = require('child_process').spawn;
 
-var models = ["project","user","media","transcript","annotation","speaker","paperedit","papercut"];
+var models = 'project, user, media, transcript, annotation, speaker, paperedit, papercut';
+
+var models = models.split(",");
+
+// var models = ["project","user","media","transcript","annotation","speaker","paperedit","papercut"];
 
 
      for(var i=0; i<models.length; i++){

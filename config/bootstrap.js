@@ -11,6 +11,13 @@
 
 module.exports.bootstrap = function(cb) {
 
+  // var mockUser = {"name":"TestUser"};
+  //
+  // User.create(mockUser).exec(function (err, res) {
+  //   // We also could have just used `Kitten.find().exec(...)`
+  //   // if we'd left the global variable exposed.
+  // });
+
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();
