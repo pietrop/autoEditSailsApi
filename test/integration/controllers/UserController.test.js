@@ -1,36 +1,19 @@
 var request = require('supertest');
+var api="/api/v1";
 
 describe('UserController', function() {
 
-  describe('#login()', function() {
-    it('should redirect to /user/:userId/project', function (done) {
+  describe('#signup()', function() {
+    it('should allow a user to sign up', function (done) {
       request(sails.hooks.http.app)
-        .post('/users/login')
-        .send({ name: 'Test User', password: 'TestPswd' })
-        // .expect(302, {
-        //   id: 'some fixed id',
-        //   name: 'TOBI'
-        // }, done);
-        .expect('location','/user/:userId/project', done);
+        .post(""+api+"/user/signup")
+        .send({ name: 'TestUser', lastname:'TestLastName',email:'test@email.com', password: 'TestPswd' })
+        .expect(201, done);
     });
-
-    it('should send sucesfull confirmation json', function (done) {
-      request(sails.hooks.http.app)
-        .post('/users/login')
-        .set('Accept', 'application/json')
-        .expect(function(res) {
-          res.body.id = 1;
-          res.body.name = res.body.name.toUpperCase();
-        })
-        .expect(200, {
-          id: 1,
-          name: 'TOBI'
-        }, done);
-    });
-
-
-
-
   });
+
+
+
+
 
 });

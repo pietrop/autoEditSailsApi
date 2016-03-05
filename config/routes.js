@@ -35,15 +35,6 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'get /hi': 'TranscriptController.hi',
-
-  //Project Media Transcript
-  'get /project/:projectId/media/:mediaId/transcript': {
-    controller: 'TranscriptController',
-    action: 'show',
-    skipAssets: true
-  }
-
 
   /***************************************************************************
   *                                                                          *
@@ -54,5 +45,8 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+
+  'POST /api/v1/user/signup': {blueprint: 'create', model: 'user'}
 
 };

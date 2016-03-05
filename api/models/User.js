@@ -21,6 +21,11 @@ module.exports = {
     collection: 'project',
     via: 'user'//attribute
   }
+  // ,
+  // media: {
+  //   collection: 'project',
+  //   via: 'media'//attribute
+  // }
 
 
   }

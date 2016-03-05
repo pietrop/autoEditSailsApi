@@ -23,7 +23,7 @@ module.exports = {
    media: {
      collection: 'media',
      via: 'clip'
-   },
+   }
 
    //Has many Transcripts through Medias
 
