@@ -16,9 +16,9 @@ before(function(done) {
     },
     models: {
       //connects to test db (sails-memory)
-      connection: 'test',
+      connection: 'localDiskDb'//,
       //wipe/drop ALL my data and rebuild models every time
-      migrate: 'drop'
+      // migrate: 'drop'
     }
     //END CONFIG
   },
