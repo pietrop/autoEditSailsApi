@@ -28,7 +28,8 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-    "test": "PORT=9999 NODE_ENV=test node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+    "test2": "PORT=9999 NODE_ENV=test node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js",
+    "test": "PORT=9999 NODE_ENV=test mocha -R spec -b --recursive"
   },
   "main": "app.js",
   "repository": {
@@ -38,6 +39,9 @@
   "author": "pietropassarelli",
   "license": "",
   "devDependencies": {
+    "barrels": "^1.6.4",
+    "sails-memory": "^0.10.6",
+    "should": "^8.2.2",
     "supertest": "^1.2.0"
   }
 }
