@@ -5,18 +5,22 @@ var should = require('should');
 var api="/api/v1";
 
 var mockUserOne = {
-                    name: 'TestUser',
-                    lastname:'TestLastName',
-                    email:'test@email.com',
-                    password: 'TestPswd'
-                  };
+                  "name":"LongJon",
+                  "lastname":"Silver",
+                  "email":"LongJon@Silver.com",
+                  "password":"TreasureIsland"
+                };
+
+var mockUserOneUpdated = {
+                          "name": 'Jack',
+                          "lastname":'Hart'
+                        };
 
 
 describe('UserController', function() {
 
 //POST
   describe('#signup()', function() {
-    
     it('should allow a user to sign up providing name,lastname, email and pswd', function (done) {
       request(sails.hooks.http.app)
         .post(""+api+"/user/signup")
@@ -72,13 +76,10 @@ describe('UserController', function() {
 
     it('should update a user s attributes', function (done) {
       //mockuser to use to update attributes of old one
-      var mockUserOneUpdated = {
-                          name: 'Jack',
-                          lastname:'Hart'
-                        };
+
 
       request(sails.hooks.http.app)
-      .post(""+api+"/user/1")
+      .post(""+api+"/user/2")
       .send(mockUserOneUpdated)
         .expect(200, done)
         .expect(function(res) {
@@ -91,27 +92,27 @@ describe('UserController', function() {
     });
   });
 
-  // describe('#delete()', function() {
-  //   it('should update a user s attributes', function (done) {
-  //     //mockuser to use to update attributes of old one
-  //     var mockUserOneUpdated = {
-  //                         name: 'Jack',
-  //                         lastname:'Hart'
-  //                       };
-  //
-  //     request(sails.hooks.http.app)
-  //     .delete(""+api+"/user/1")
-  //     // .send(mockUserOneUpdated)
-  //       .expect(200, done)
-  //       .expect(function(res) {
-  //       // When deleting an object sails blueprint returns the object being deleted
-  //       //TODO: perhaps to be changed with a response sucesfull instead?
-  //       should(res.body.name).be.exactly(mockUserOneUpdated.name);
-  //       should(res.body.lastname).be.exactly(mockUserOneUpdated.lastname);
-  //       // console.log(res.body);
-  //     });
-  //   });
-  // });
+  describe('#delete()', function() {
+    it('should update a user s attributes', function (done) {
+      //mockuser to use to update attributes of old one
+      var mockUserOneUpdated = {
+                          name: 'Jack',
+                          lastname:'Hart'
+                        };
+
+      request(sails.hooks.http.app)
+      .delete(""+api+"/user/1")
+      // .send(mockUserOneUpdated)
+        .expect(200, done)
+        .expect(function(res) {
+        // When deleting an object sails blueprint returns the object being deleted
+        //TODO: perhaps to be changed with a response sucesfull instead?
+        should(res.body.name).be.exactly(mockUserOne.name);
+        should(res.body.lastname).be.exactly(mockUserOne.lastname);
+        // console.log(res.body);
+      });
+    });
+  });
 
 
 

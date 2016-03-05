@@ -1,9 +1,14 @@
 [
   {
-    "id":1,
-  "name":"Herman",
-  "lastname":"Melville",
-  "email":"herman@melville.com",
-  "password":"MobyDick"
-  }
+  "name":"LongJon",
+  "lastname":"Silver",
+  "email":"LongJon@Silver.com",
+  "password":"TreasureIsland"
+},
+{
+"name":"Jack",
+"lastname":"Sparrow",
+"email":"Jack@sparrow.com",
+"password":"Carribean"
+}
 ]

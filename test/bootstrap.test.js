@@ -4,7 +4,7 @@ var Barrels = require('barrels');
 
 before(function(done) {
   // Increase the Mocha timeout so that Sails has enough time to lift.
-  this.timeout(5000);
+  // this.timeout(5000);
 
   sails.lift({
     // configuration for testing purposes
@@ -16,9 +16,9 @@ before(function(done) {
     },
     models: {
       //connects to test db (sails-memory)
-      connection: 'localDiskDb'//,
+      connection: 'test',
       //wipe/drop ALL my data and rebuild models every time
-      // migrate: 'drop'
+      migrate: 'drop'
     }
     //END CONFIG
   },
@@ -37,7 +37,24 @@ before(function(done) {
 
      // Populate the DB
      barrels.populate(function(err) {
-       done(err,sails);
+
+      //  var data =  {"users":[{"id":1,"name":"Herman","lastname":"Melville","email":"herman@melville.com","password":"MobyDick"}]};
+      var data = barrels.data;
+      console.log(JSON.stringify(data));
+
+       for(var i=0; i<data.users.length; i++){
+         //creating test objects from `/test/fixtures/users.json`
+         User.create(data.users[i]).exec(function (err, res) {
+           console.log("Created Mock User "+JSON.stringify(res)+"\n");
+         });
+       }
+
+      // populateDB(data, function(){
+        done(err,sails);
+      // });
+
+
+
      });
 
 
@@ -53,3 +70,27 @@ after(function(done) {
   // here you can clear fixtures, etc.. not needed if using sails-memory(?)
   sails.lower(done);
 });
+
+
+//
+// function populateDB(data,cb){
+//   //Loop through modesl
+//   // for(var j=0; j<data.length; j++){
+//     for (var j in data) {
+//       console.log("data[j]")
+//       console.log(data[j])
+//     // upcase and remove trailing s
+//     var modelNameS = data[j];
+//     var modelNameUpcase = j.capitalize().replace(/s+$/, "");
+//     modelNameUpcase.create(data[j]).exec(function (err, res) {
+//       console.log("Created  "+modelName+JSON.stringify(res)+"\n");
+//     });
+//   }
+//
+//   if(cb){cb()};
+// }
+//
+//
+// String.prototype.capitalize = function() {
+//     return this.charAt(0).toUpperCase() + this.slice(1);
+// }
