@@ -29,23 +29,19 @@ module.exports = require('waterlock').actions.user({
   * `UserController.findOne()`
   */
   findOne: function (req, res) {
-        console.log(req);
+
     User.findOne({
-      id : req.body.email
+      id : req.params.id
     }).exec(function (err, account){
       if (err) {
-        return res.negotiate(err);
+        return res.send(err);
       }
       if (!account) {
-        return res.notFound('Could not find the user, sorry.');
+        return res.send('Could not find the user, sorry.');
       }
 
       sails.log('Found "%s"', account.email);
       return res.json(account);
-    });
-
-    return res.json({
-      success: 'found users'
     });
   },
 
@@ -65,11 +61,6 @@ module.exports = require('waterlock').actions.user({
       sails.log('Found "%s"', users.email);
       return res.json(users);
     });
-
-    return res.json({
-      success: 'found users'
-    });
-
   },
 
   /**
@@ -77,23 +68,30 @@ module.exports = require('waterlock').actions.user({
   */
   update: function (req, res) {
 
-    User.update({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    }).exec(function (err, updated){
+    console.log(req.params.id);
+      console.log(req.body.name);
 
-      if (err) {
-        // handle error here- e.g. `res.serverError(err);`
-        return;
-      }
+User.findOne({ id: req.params.id }).exec(function (err, user) {
 
-      console.log('Updated user to have name ' + updated[0].name);
-    });
+  User.update({
+    name: req.body.name
+  }
+).exec(function (err, updated){
 
-    return res.json({
-      success: 'user created'
-    });
+  if (err) {
+    // handle error here- e.g. `res.serverError(err);`
+    return res.negotiate(err);
+  }
+
+  return res.json('updated: ' + updated);
+
+  console.log('Updated user to have name ' + updated[0].name);
+});
+
+
+});
+
+
   },
 
 
@@ -103,7 +101,7 @@ module.exports = require('waterlock').actions.user({
   destroy: function (req, res) {
 
     User.destroy({
-      id: req.body.id
+      id: req.params.id
     }).exec(function (err){
       if (err) {
         return res.negotiate(err);
