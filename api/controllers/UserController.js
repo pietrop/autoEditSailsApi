@@ -71,27 +71,20 @@ module.exports = require('waterlock').actions.user({
     console.log(req.params.id);
       console.log(req.body.name);
 
-User.findOne({ id: req.params.id }).exec(function (err, user) {
-
-  User.update({
-    name: req.body.name
-  }
-).exec(function (err, updated){
-
-  if (err) {
-    // handle error here- e.g. `res.serverError(err);`
-    return res.negotiate(err);
-  }
-
-  return res.json('updated: ' + updated);
-
-  console.log('Updated user to have name ' + updated[0].name);
-});
-
-
-});
-
-
+      User.update({
+       id: req.params.id
+      },
+      req.body
+      , function(err, users) {
+      // Error handling
+      if (err) {
+      return console.log(err);
+      // Updated users successfully!
+      } else {
+      console.log("Users updated:", users);
+        return res.json('user updated' );
+      }
+       });
   },
 
 
