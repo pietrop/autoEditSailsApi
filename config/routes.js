@@ -59,7 +59,7 @@ module.exports.routes = {
     view: 'loginpage'
   }
 ,
-  'POST /login/:userEmail/:userPassword'   :   'AuthController.login'
+  'POST /login'   :   'AuthController.login'
 
 /*= End of ROUTES FOR SIGNIN =*/
 /*=============================================<<<<<*/
@@ -72,7 +72,7 @@ module.exports.routes = {
     view: 'signuppage'
   }
 ,
-  'POST /signup/:userEmail/:userPassword'   :   'AuthController.singup'
+  'POST /signup'   :   'AuthController.singup'
 
 /*= End of ROUTES FOR SIGNUP =*/
 /*=============================================<<<<<*/
@@ -129,6 +129,9 @@ module.exports.routes = {
   'PUT user/:userId/project/:projectId/transcript/:transcriptId'      :   'TranscriptController.update'
 ,
   'DELETE user/:userId/project/:projectId/transcript/:transcriptId'   :   'TranscriptController.delete'
+,
+
+  'POST user/:userId/project/:projectId/transcript'                   :   'TranscriptController.create'
 
 ,
   'GET user/:userId/project/:projectId/paperedit'                   :   'PapereditController.list'
@@ -178,13 +181,13 @@ module.exports.routes = {
 
 /*= End of ROUTES FOR CREATE NEW PAPER EDIT =*/
 /*=============================================<<<<<*/
-,
+// ,
 /*=============================================>>>>>
 = ROUTES FOR PAPEREDIT PANEL =
 ===============================================>>>>>*/
-  'GET user/:userId/project/:projectId/paperedit/:papereditId'    :   'PapereditController.findOne'
-,
-  'PUT user/:userId/project/:projectId/paperedit/:papereditId'    :   'PapereditController.update'
+  // 'GET user/:userId/project/:projectId/paperedit/:papereditId'    :   'PapereditController.findOne'
+// ,
+  // 'PUT user/:userId/project/:projectId/paperedit/:papereditId'    :   'PapereditController.update'
 
 /*= End of ROUTES FOR PAPEREDIT PANEL =*/
 /*=============================================<<<<<*/
