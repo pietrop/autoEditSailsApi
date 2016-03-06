@@ -66,6 +66,7 @@ module.exports.policies = {
 
   AuthController: {
     login: ['sessionAuth'],
+    signup: true,
     logout: true
   }
 

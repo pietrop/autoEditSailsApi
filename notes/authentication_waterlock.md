@@ -26,7 +26,7 @@ i.e. **controller**
 ```js
 module.exports = require('waterlock').actions.user({
 
-  //do domething
+  //do something
 });
 ```
 
@@ -35,6 +35,7 @@ i.e. **model**
 module.exports = {
 
   attributes: require('waterlock').models.user.attributes({
+
       // define attributes
 
   });
@@ -69,3 +70,4 @@ UserController: {
  ## TO DO
  Define the action routes to lock down.
  Implement the methods that need to be either open or restricted through session.
+ How to separate ``POST`` from ``GET`` in ``policies.js`` files?
