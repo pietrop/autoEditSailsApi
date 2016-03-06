@@ -17,7 +17,7 @@ var mockUserOneUpdated = {
                         };
 
 
-describe('UserController', function() {
+describe('AuthController', function() {
 
 //POST
   describe('#signup()', function() {
