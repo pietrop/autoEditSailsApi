@@ -100,7 +100,7 @@ module.exports.routes = {
 
   'GET user/:userId/project'                  :   'ProjectController.findAll'
 ,
-  'GET user/:userId/proroject/:projectId'     :   'ProjectController.findOne'
+  'GET user/:userId/project/:projectId'     :   'ProjectController.findOne'
 ,
   'PUT user/:userId/project/:projectId'       :   'ProjectController.update'
 ,
