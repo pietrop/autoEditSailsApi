@@ -42,4 +42,4 @@ UserController: {
 
  ## TO DO
  Define the action routes to lock down.
- Implement the methods that need to be either open or restricted by session.
+ Implement the methods that need to be either open or restricted through session.
