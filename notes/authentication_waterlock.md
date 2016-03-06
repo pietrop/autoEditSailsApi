@@ -18,6 +18,32 @@ the controllers for:
 
 and the authentication policies in ``/api/policies/``
 
+## Notes
+
+The models and controllers need to be wrapped up by ``require('waterlock')``:
+
+i.e. **controller**
+```js
+module.exports = require('waterlock').actions.user({
+
+  //do domething
+});
+```
+
+i.e. **model**
+```js
+module.exports = {
+
+  attributes: require('waterlock').models.user.attributes({
+      // define attributes
+
+  });
+
+  beforeCreate: require('waterlock').models.user.beforeCreate,
+  beforeUpdate: require('waterlock').models.user.beforeUpdate
+};
+```
+
 ## Configuration
 
 In ``/config/policies.js`` the default action routes (after they have been overwritten in the relative controller) can be associated with the auth strategy.

@@ -3,15 +3,14 @@
 Organised by front end views
 
 ## Sing in
-Create
 ```
-post /user/signin
+post /auth/login
 ```
 
 ## Sing up
 
 ```
-post /user/signup
+post /auth/signup
 ```
 (?)
 
