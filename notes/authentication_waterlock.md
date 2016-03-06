@@ -66,8 +66,14 @@ UserController: {
  - _JSON Web Tokens_ for token based APIs
  - _POST action routes_
 
+### Current implemented login method
+_Your user can simply try to login to ``/login`` if the user is not found one will be created using waterlines ``findOrCreate`` method_
+
+### Get a JSON Web Token
+_Your user can request tokens, once they are authenticated, by navigating to the following URI_ ``/user/jwt``
+
 
  ## TO DO
  Define the action routes to lock down.
  Implement the methods that need to be either open or restricted through session.
- How to separate ``POST`` from ``GET`` in ``policies.js`` files?
+ How to separate ``POST`` from ``GET`` in ``policies.js`` file?

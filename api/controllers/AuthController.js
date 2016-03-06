@@ -17,13 +17,13 @@ module.exports = require('waterlock').waterlocked({
 
  // NEED TO BE IMPLEMENTED:
 
-  // login: function () {
-  //
-  // },
+  login: function () {
 
-  // signup: function () {
-  //
-  // }
+  },
+
+  signup: function () {
+
+  }
 
 
 });
