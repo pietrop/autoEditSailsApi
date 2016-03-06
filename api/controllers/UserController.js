@@ -29,24 +29,24 @@ module.exports = require('waterlock').actions.user({
   * `UserController.findOne()`
   */
   findOne: function (req, res) {
-
+        console.log(req);
     User.findOne({
-     id : req.body._id
-}).exec(function (err, account){
-  if (err) {
-    return res.negotiate(err);
-  }
-  if (!account) {
-    return res.notFound('Could not find the user, sorry.');
-  }
+      id : req.body.email
+    }).exec(function (err, account){
+      if (err) {
+        return res.negotiate(err);
+      }
+      if (!account) {
+        return res.notFound('Could not find the user, sorry.');
+      }
 
-  sails.log('Found "%s"', account.email);
-  return res.json(account);
-});
+      sails.log('Found "%s"', account.email);
+      return res.json(account);
+    });
 
-return res.json({
-  success: 'found users'
-});
+    return res.json({
+      success: 'found users'
+    });
   },
 
   /**
@@ -55,20 +55,20 @@ return res.json({
   findAll: function (req, res) {
 
     User.find().exec(function (err, users){
-  if (err) {
-    return res.negotiate(err);
-  }
-  if (!users) {
-    return res.notFound('Could not find any user, sorry.');
-  }
+      if (err) {
+        return res.negotiate(err);
+      }
+      if (!users) {
+        return res.notFound('Could not find any user, sorry.');
+      }
 
-  sails.log('Found "%s"', users.email);
-  return res.json(users);
-});
+      sails.log('Found "%s"', users.email);
+      return res.json(users);
+    });
 
-return res.json({
-  success: 'found users'
-});
+    return res.json({
+      success: 'found users'
+    });
 
   },
 
@@ -103,18 +103,18 @@ return res.json({
   destroy: function (req, res) {
 
     User.destroy({
-        id: req.body.id
-      }).exec(function (err){
-        if (err) {
-  return res.negotiate(err);
-}
-sails.log('Deleted user, if it existed.');
-return res.json({
-  success: 'Deleted user, if it existed.'
-});
+      id: req.body.id
+    }).exec(function (err){
+      if (err) {
+        return res.negotiate(err);
+      }
+      sails.log('Deleted user, if it existed.');
+      return res.json({
+        success: 'Deleted user, if it existed.'
+      });
 
-});
-}
+    });
+  }
 
 
 
