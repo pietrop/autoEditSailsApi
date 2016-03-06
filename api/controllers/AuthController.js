@@ -15,5 +15,15 @@ module.exports = require('waterlock').waterlocked({
     }
   */
 
+ // NEED TO BE IMPLEMENTED:
+
+  // login: function () {
+  //
+  // },
+
+  // signup: function () {
+  //
+  // }
+
 
 });
