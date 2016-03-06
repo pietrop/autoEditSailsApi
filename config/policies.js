@@ -26,7 +26,8 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': true,
+
 
   /***************************************************************************
   *                                                                          *
@@ -59,7 +60,14 @@ module.exports.policies = {
   //   '*': false
   // }
 
+  UserController: {
+    '*': ['sessionAuth']
+  },
 
+  AuthController: {
+    login: ['sessionAuth'],
+    logout: true
+  }
 
 
 };
