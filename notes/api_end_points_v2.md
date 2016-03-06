@@ -7,6 +7,9 @@ Organised by front end views
 post /auth/login
 ```
 
+- valid details
+- non valid user name and pswd etc..
+
 ## Sing up
 
 ```
@@ -138,6 +141,10 @@ Annotation - delete
 ```
 delete /user/:userId/project/:projectId/transcript/:transcriptId/annotation/:annotationId
 ```
+- if user == current user
+- if project
+- if transcript
+- if annotation
 
 ## Create New Paperedit
 Paperedit Create

@@ -23,6 +23,10 @@ module.exports = require('waterlock').waterlocked({
 
   signup: function () {
 
+  },
+
+  logout: function () {
+
   }
 
 

@@ -61,7 +61,8 @@ module.exports.policies = {
   // }
 
   UserController: {
-    '*': ['sessionAuth']
+    '*': ['sessionAuth'],
+    update: ['sessionAuth', 'isSuperAdmin']
   },
 
   AuthController: {
