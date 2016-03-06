@@ -85,7 +85,7 @@ module.exports = require('waterlock').actions.user({
   /**
    * `UserController.delete()`
    */
-  destroy: function(req, res) {
+  delete: function(req, res) {
 
     User.destroy({
       id: req.params.id

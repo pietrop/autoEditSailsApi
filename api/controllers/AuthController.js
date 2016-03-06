@@ -16,22 +16,31 @@ module.exports = require('waterlock').waterlocked({
   */
 
  // NEED TO BE IMPLEMENTED:
-
+ /**
+  * `AuthController.login()`
+  */
   login: function (req, res) {
       return res.json({
         success:'login page'
       });
   },
 
+/**
+  * `AuthController.signup()`
+  */
   signup: function (req, res) {
     return res.json({
-      success:'login page'
+      success:'signup page'
+    });
+  },
+
+/**
+  * `AuthController.logout()`
+  */
+  logout:function (req, res) {
+    return res.json({
+      success:'logout page'
     });
   }
-  //
-  // logout: function () {
-  //
-  // }
-
 
 });

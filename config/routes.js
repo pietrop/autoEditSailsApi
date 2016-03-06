@@ -72,9 +72,18 @@ module.exports.routes = {
     view: 'signuppage'
   }
 ,
-  'POST /signup'   :   'AuthController.singup'
+  'POST /signup'   :   'AuthController.signup'
 
 /*= End of ROUTES FOR SIGNUP =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR LOGOUT =
+===============================================>>>>>*/
+
+  'POST /logout'   :   'AuthController.logout'
+
+/*= End of ROUTES FOR LOGOUT =*/
 /*=============================================<<<<<*/
 ,
 /*=============================================>>>>>
