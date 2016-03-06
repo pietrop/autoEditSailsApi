@@ -5,25 +5,34 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-module.exports = require('waterlock').actions.project({
+module.exports = {
 
   /**
    * `ProjectController.create()`
    */
-  // create: function(req, res) {
-	//
-  //   Project.create({
-  //     name: req.body.name,
-  //     email: req.body.email,
-  //     password: req.body.password
-  //   }).exec(function(err, msg) {
-  //     sails.log(msg);
-  //   });
-	//
-  //   return res.json({
-  //     success: 'project created'
-  //   });
-  // },
+  create: function(req, res) {
+    console.log(req.params.userId)
+		User.findOne({id: req.params.userId}).exec(function(err, msg){
+       console.log(msg);
+	  	 sails.log(msg);
+		});
+
+		return res.json({
+		  success: 'project created'
+		});
+
+    // Project.create({
+    //   name: req.body.name,
+    //   email: req.body.email,
+    //   password: req.body.password
+    // }).exec(function(err, msg) {
+    //   sails.log(msg);
+    // });
+		//
+    // return res.json({
+    //   success: 'project created'
+    // });
+  }
 
   //  /**
   //   * `UserController.findOne()`
@@ -101,4 +110,4 @@ module.exports = require('waterlock').actions.project({
   //    });
   //  }
 
-});
+};

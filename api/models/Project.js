@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  attributes: require('waterlock').models.project.attributes({
+  attributes: {
 
     name: 'string',
     description: 'string',
@@ -20,7 +20,7 @@ module.exports = {
     media: {
       collection: 'media',
       via: 'clip'
-    },
+    }
     //Has many Transcripts through Medias
 
     // Has many Annotations through Transcripts
@@ -29,7 +29,5 @@ module.exports = {
 
     // Has many Paperedit Annotation
 
-    beforeCreate: require('waterlock').models.user.beforeCreate,
-    beforeUpdate: require('waterlock').models.user.beforeUpdate
-  });
+  }
 };

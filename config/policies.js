@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true
+  '*': true,
 
 
   /***************************************************************************
@@ -74,6 +74,10 @@ module.exports.policies = {
   //   // signup: true,
   //   // logout: true
   // }
+
+  ProjectController : {
+    'GET /project': false
+  }
 
 
 };
