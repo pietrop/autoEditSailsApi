@@ -61,18 +61,18 @@ module.exports.policies = {
   // }
 
   UserController: {
-    '*': ['sessionAuth'],
-    // create: ['sessionAuth'],
-    create: true,
-    // update: ['sessionAuth'],
-    update: true,
-    delete: ['sessionAuth']
+    // '*': ['sessionAuth'],
+    // // create: ['sessionAuth'],
+    // create: true,
+    // // update: ['sessionAuth'],
+    // update: true,
+    // delete: ['sessionAuth']
   },
 
   AuthController: {
-    login: ['sessionAuth'],
-    signup: true,
-    logout: true
+    // login: true,
+    // signup: true,
+    // logout: true
   }
 
 

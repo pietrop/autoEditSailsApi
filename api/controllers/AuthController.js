@@ -17,17 +17,21 @@ module.exports = require('waterlock').waterlocked({
 
  // NEED TO BE IMPLEMENTED:
 
-  login: function () {
-
+  login: function (req, res) {
+      return res.json({
+        success:'login page'
+      });
   },
 
-  signup: function () {
-
-  },
-
-  logout: function () {
-
+  signup: function (req, res) {
+    return res.json({
+      success:'login page'
+    });
   }
+  //
+  // logout: function () {
+  //
+  // }
 
 
 });

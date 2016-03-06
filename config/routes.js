@@ -50,7 +50,145 @@ module.exports.routes = {
   // 'POST /api/v1/user/signup': {blueprint: 'create', model: 'user'},
   //
   // //TODO: make custum `.find` in user controller
-  // 'POST /api/v1/user/signin': 'UserController.find'
+
+/*=============================================>>>>>
+= ROUTES FOR SIGNIN =
+===============================================>>>>>*/
+
+  'GET  /login' : {
+    view: 'loginpage'
+  }
+,
+  'POST /login/:userEmail/:userPassword'    :   'AuthController.login'
+
+/*= End of ROUTES FOR SIGNIN =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR SIGNUP =
+===============================================>>>>>*/
+
+  'GET  /signup' : {
+    view: 'signuppage'
+  }
+,
+  'POST /signup/:userEmail/:userPassword'   :   'AuthController.singup'
+
+/*= End of ROUTES FOR SIGNUP =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR USER ACCOUNT =
+===============================================>>>>>*/
+
+  'GET  user/'            :  'UserController.findAll'
+,
+  'POST user/'            :  'UserController.create'
+,
+  'GET  user/:userId'     :  'UserController.findOne'
+,
+  'PUT user/:userId'      :  'UserController.update'
+,
+  'DELETE user/:userId '  :  'UserController.delete'
+
+/*= End of ROUTES FOR USER ACCOUNT =*/
+/*=============================================<<<<<*/
+// ,
+/*=============================================>>>>>
+= ROUTES FOR PROJECT LIST =
+===============================================>>>>>*/
+
+  'GET user/:userId/project'                  :   'ProjectController.findAll'
+,
+  'GET user/:userId/proroject/:projectId'     :   'ProjectController.findOne'
+,
+  'PUT user/:userId/project/:projectId'       :   'ProjectController.update'
+,
+  'DELETE user/:userId/project/:projectId'    :   'ProjectController.delete'
+
+/*= End of ROUTES FOR PROJECT LIST =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR CREATE NEW PROJECT =
+===============================================>>>>>*/
+
+  'POST user/:userId/project'   :   'ProjectController.create'
+
+/*= End of ROUTES FOR CREATE NEW PROJECT =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR PROJECT PANEL  =
+===============================================>>>>>*/
+
+  'GET user/:userId/project/:projectId/transcript/'                   :   'TranscriptController.list'
+,
+  'GET user/:userId/project/:projectId/transcript/:transcriptId'      :   'TranscriptController.findOne'
+,
+  'PUT user/:userId/project/:projectId/transcript/:transcriptId'      :   'TranscriptController.update'
+,
+  'DELETE user/:userId/project/:projectId/transcript/:transcriptId'   :   'TranscriptController.delete'
+
+,
+  'GET user/:userId/project/:projectId/paperedit'                   :   'PapereditController.list'
+,
+  'GET user/:userId/project/:projectId/paperedit/:papereditId'      :   'PapereditController.findOne'
+,
+  'PUT user/:userId/project/:projectId/paperedit/:papereditId'      :   'PapereditController.update'
+,
+  'DELETE user/:userId/project/:projectId/paperedit/:papereditId'   :   'PapereditController.delete'
+
+/*= End of ROUTES FOR PROJECT PANEL  =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR CREATE NEW MEDIA =
+===============================================>>>>>*/
+
+  'POST user/:userId/project/:projectId/media'    :   'MediaController.upload'
+
+/*= End of ROUTES FOR CREATE NEW MEDIA =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR READ TRANSCRIPT =
+===============================================>>>>>*/
+
+  // 'GET user/:userId/project/:projectId/transcript/:transcriptId'  : 'TranscriptController.findOne'
+  // ,
+  'GET user/:userId/project/:projectId/annotation'                                             :   'AnnotationController.list'
+,
+  'GET user/:userId/project/:projectId/transcript/:transcriptId/annotation'                    :   'AnnotationController.findOne'
+,
+  'POST user/:userId/project/:projectId/transcript/:transcriptId/annotation'                   :   'AnnotationController.create'
+,
+  'PUT user/:userId/project/:projectId/transcript/:transcriptId/annotation/:annotationId'      :   'AnnotationController.update'
+,
+  'DELETE user/:userId/project/:projectId/transcript/:transcriptId/annotation/:annotationId'   :   'AnnotationController.delete'
+
+/*= End of ROUTES FOR READ TRANSCRIPT =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR CREATE NEW PAPER EDIT =
+===============================================>>>>>*/
+
+  'POST user/:userId/project/:projectId/paperedit'  :  'PapereditController.create'
+
+/*= End of ROUTES FOR CREATE NEW PAPER EDIT =*/
+/*=============================================<<<<<*/
+,
+/*=============================================>>>>>
+= ROUTES FOR PAPEREDIT PANEL =
+===============================================>>>>>*/
+  'GET user/:userId/project/:projectId/paperedit/:papereditId'    :   'PapereditController.findOne'
+,
+  'PUT user/:userId/project/:projectId/paperedit/:papereditId'    :   'PapereditController.update'
+
+/*= End of ROUTES FOR PAPEREDIT PANEL =*/
+/*=============================================<<<<<*/
+
 
 
 };
