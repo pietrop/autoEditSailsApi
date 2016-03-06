@@ -12,12 +12,13 @@ post /auth/login
 ```
 post /auth/signup
 ```
-(?)
 
 ----
 All of the following are Authenticated requests
 
+
 ## User account
+
 Read
 ```
 get /user/:userId
