@@ -1,22 +1,22 @@
 /**
-* UserController
-*
-* @description :: Server-side logic for managing users
-* @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
-*/
+ * UserController
+ *
+ * @description :: Server-side logic for managing users
+ * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ */
 
 module.exports = require('waterlock').actions.user({
 
   /**
-  * `UserController.create()`
-  */
-  create: function (req, res) {
+   * `UserController.create()`
+   */
+  create: function(req, res) {
 
     User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
-    }).exec(function(err, msg){
+    }).exec(function(err, msg) {
       sails.log(msg);
     });
 
@@ -26,76 +26,70 @@ module.exports = require('waterlock').actions.user({
   },
 
   /**
-  * `UserController.findOne()`
-  */
-  findOne: function (req, res) {
+   * `UserController.findOne()`
+   */
+  findOne: function(req, res) {
 
     User.findOne({
-      id : req.params.id
-    }).exec(function (err, account){
+      id: req.params.id
+    }).exec(function(err, account) {
       if (err) {
         return res.send(err);
       }
       if (!account) {
         return res.send('Could not find the user, sorry.');
       }
-
       sails.log('Found "%s"', account.email);
       return res.json(account);
     });
   },
 
   /**
-  * `UserController.findAll()`
-  */
-  findAll: function (req, res) {
+   * `UserController.findAll()`
+   */
+  findAll: function(req, res) {
 
-    User.find().exec(function (err, users){
+    User.find().exec(function(err, users) {
       if (err) {
         return res.negotiate(err);
       }
       if (!users) {
         return res.notFound('Could not find any user, sorry.');
       }
-
       sails.log('Found "%s"', users.email);
       return res.json(users);
     });
   },
 
   /**
-  * `UserController.update()`
-  */
-  update: function (req, res) {
+   * `UserController.update()`
+   */
+  update: function(req, res) {
 
-    console.log(req.params.id);
-      console.log(req.body.name);
-
-      User.update({
-       id: req.params.id
+    User.update({
+        id: req.params.id
       },
-      req.body
-      , function(err, users) {
-      // Error handling
-      if (err) {
-      return console.log(err);
-      // Updated users successfully!
-      } else {
-      console.log("Users updated:", users);
-        return res.json('user updated' );
-      }
-       });
+      req.body,
+      function(err, users) {
+        // Error handling
+        if (err) {
+          return console.log(err);
+          // Updated users successfully!
+        } else {
+          console.log("Users updated:", users);
+          return res.json('user updated');
+        }
+      });
   },
 
-
   /**
-  * `UserController.delete()`
-  */
-  destroy: function (req, res) {
+   * `UserController.delete()`
+   */
+  destroy: function(req, res) {
 
     User.destroy({
       id: req.params.id
-    }).exec(function (err){
+    }).exec(function(err) {
       if (err) {
         return res.negotiate(err);
       }

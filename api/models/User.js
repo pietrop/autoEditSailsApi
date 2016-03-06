@@ -14,18 +14,17 @@ module.exports = {
     nickname: 'string'
     */
 
-  name : 'string',
-  lastname : 'string',
-  email : 'string',
-  password : 'string',
+    name: 'string',
+    lastname: 'string',
+    email: 'string',
+    password: 'string',
 
-  //  Belongs to Project
-  projects: {
-    collection: 'project',
-    via: 'user'//attribute
-  }
-
-
+    //  Belongs to Project
+    projects: {
+      collection: 'project',
+      via: 'user' //attribute
+    }
+    
   }),
 
   beforeCreate: require('waterlock').models.user.beforeCreate,
