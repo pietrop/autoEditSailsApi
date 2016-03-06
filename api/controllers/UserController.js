@@ -31,7 +31,7 @@ module.exports = require('waterlock').actions.user({
   findOne: function (req, res) {
 
     User.findOne({
-  username:req.body.email
+     id : req.body._id
 }).exec(function (err, account){
   if (err) {
     return res.negotiate(err);
@@ -42,6 +42,10 @@ module.exports = require('waterlock').actions.user({
 
   sails.log('Found "%s"', account.email);
   return res.json(account);
+});
+
+return res.json({
+  success: 'found users'
 });
   },
 
@@ -61,6 +65,11 @@ module.exports = require('waterlock').actions.user({
   sails.log('Found "%s"', users.email);
   return res.json(users);
 });
+
+return res.json({
+  success: 'found users'
+});
+
   },
 
   /**

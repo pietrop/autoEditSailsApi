@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*': true
 
 
   /***************************************************************************
@@ -60,20 +60,20 @@ module.exports.policies = {
   //   '*': false
   // }
 
-  UserController: {
-    // '*': ['sessionAuth'],
-    // // create: ['sessionAuth'],
-    // create: true,
-    // // update: ['sessionAuth'],
-    // update: true,
-    // delete: ['sessionAuth']
-  },
-
-  AuthController: {
-    // login: true,
-    // signup: true,
-    // logout: true
-  }
+  // UserController: {
+  //   // '*': ['sessionAuth'],
+  //   // // create: ['sessionAuth'],
+  //   // create: true,
+  //   // // update: ['sessionAuth'],
+  //   // update: true,
+  //   // delete: ['sessionAuth']
+  // },
+  //
+  // AuthController: {
+  //   // login: true,
+  //   // signup: true,
+  //   // logout: true
+  // }
 
 
 };

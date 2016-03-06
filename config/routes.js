@@ -59,7 +59,7 @@ module.exports.routes = {
     view: 'loginpage'
   }
 ,
-  'POST /login/:userEmail/:userPassword'    :   'AuthController.login'
+  'POST /login/:userEmail/:userPassword'   :   'AuthController.login'
 
 /*= End of ROUTES FOR SIGNIN =*/
 /*=============================================<<<<<*/
@@ -83,7 +83,7 @@ module.exports.routes = {
 
   'GET  user/'            :  'UserController.findAll'
 ,
-  'POST user/'            :  'UserController.create'
+  'POST user/'            :  'UserController.create'   // through req.body
 ,
   'GET  user/:userId'     :  'UserController.findOne'
 ,
