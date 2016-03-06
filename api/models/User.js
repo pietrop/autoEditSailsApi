@@ -24,7 +24,7 @@ module.exports = {
       collection: 'project',
       via: 'user' //attribute
     }
-    
+
   }),
 
   beforeCreate: require('waterlock').models.user.beforeCreate,

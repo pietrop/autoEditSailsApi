@@ -47,10 +47,6 @@ module.exports.routes = {
   ***************************************************************************/
 
 
-  // 'POST /api/v1/user/signup': {blueprint: 'create', model: 'user'},
-  //
-  // //TODO: make custum `.find` in user controller
-
 /*=============================================>>>>>
 = ROUTES FOR SIGNIN =
 ===============================================>>>>>*/
