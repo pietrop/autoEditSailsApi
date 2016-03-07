@@ -11,22 +11,22 @@ module.exports = {
   attributes: {
     name : { type: 'string' },
 
-  lastname : { type: 'string' },
+    lastname : { type: 'string' },
 
-  email : { type: 'string' },
+    email : { type: 'string' },
 
-  password : { type: 'string' },
+    password : { type: 'string' },
 
-  //  Belongs to Project
-  project: {
-    collection: 'project',
-    via: 'user'//attribute
-  }
-  // ,
-  // media: {
-  //   collection: 'project',
-  //   via: 'media'//attribute
-  // }
+    //  Belongs to Project
+    project: {
+      collection: 'project',
+      via: 'user'//attribute
+    }
+    // ,
+    // media: {
+    //   collection: 'project',
+    //   via: 'media'//attribute
+    // }
 
 
   }
