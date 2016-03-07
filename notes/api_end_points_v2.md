@@ -2,18 +2,22 @@
 # API end points v2
 Organised by front end views
 
-## Sing in
-Create
-```
-post /signin
-```
-
 ## Sing up
 
 ```
 post /signup
 ```
 (?)
+
+## Sing in
+Create
+```
+post /signin
+```
+
+## Delete
+
+## Update
 
 ----
 All of the following are Authenticated requests
@@ -41,7 +45,7 @@ Read Show
 ```
 get /user/:userId/project/:projectId
 ```
-Update Show
+Update
 ```
 put /user/:userId/project/:projectId
 ```
@@ -68,11 +72,6 @@ Transcript - list
 ```
 get /user/:userId/project/:projectId/transcript/
 ```
-Paperedit - list
-```
-get /user/:userId/project/:projectId/paperedit/
-```
-
 Transcript - CRUD - Show
 ```
 get /user/:userId/project/:projectId/transcript/:transcriptId
@@ -84,6 +83,11 @@ put /user/:userId/project/:projectId/transcript/:transcriptId
 Transcript - CRUD - delete
 ```
 delete /user/:userId/project/:projectId/transcript/:transcriptId
+```
+
+Paperedit - list
+```
+get /user/:userId/project/:projectId/paperedit/
 ```
 
 Paperedit - CRUD - show
@@ -107,6 +111,17 @@ even if srt is provided, media needs to be processed for speaker diarization
 post /user/:userId/project/:projectId/media
 ```
 
+TODO: NEW media delete method
+```
+dalete /user/:userId/project/:projectId/media/:mediaId
+```
+
+TODO: NEW media update method
+to update media details, ie metadata fields, name, etc..
+```
+put /user/:userId/project/:projectId/media/:mediaId
+```
+
 
 
 ## Read transcript (Hypertranscript)
@@ -122,7 +137,7 @@ To view tags/annotation used in other transcripts of same project
 get /user/:userId/project/:projectId/annotation
 ```
 Annotation read index
-View list of annotations used in this transcripts
+View list of annotations used in this transcript
 ```
 get /user/:userId/project/:projectId/transcript/:transcriptId/annotation
 ```

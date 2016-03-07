@@ -19,18 +19,18 @@ var mockUserOneUpdated = {
 
 describe('AuthController', function() {
 
-//POST
+// User sign/signup/login Page 
   describe('#signup()', function() {
     it('should allow a user to sign up providing name,lastname, email and pswd', function (done) {
       request(sails.hooks.http.app)
         .post(""+api+"/signup")
         .send(mockUserOne)
-        // .expect(201, done)
+        // .expect(201)
         .expect (function(res){
           console.log("HERE")
           console.log(res.sesssion.authenticated)
           //return res.ok('auth');
-        } );
+        }, done );
     });
   });
 
