@@ -1,0 +1,48 @@
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+<h3><small>Transcriptions</small></h3>
+<!-- tab -->
+<ul class="nav nav-pills nav-stacked" id="myTabs">
+  <% "for video in videos" %>
+  <li><a data-toggle="tab" href="#{{ video._id }}" ><%= "video.name" %></a></li>
+  <% "endfor" %>
+</ul>
+<!-- end tab -->
+</div><!-- col 2-->
+<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+
+  <div id="transcriptions">
+    <br>
+    <!-- tab content -->
+    <div class="tab-content" >
+      <% "for video in videos" %>
+      <div id=<%=" video._id "%>  class="tab-pane fade in active">
+        <!-- video -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+            <!-- Popcorn Sequence Preview -->
+            <!-- 16:9 aspect ratio -->
+            <div class="embed-responsive embed-responsive-16by9">
+              <video  controls>
+                <!--    <source src="movie.mp4" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg"> -->
+                <source src=<%=" video.oggFilePath "%> type="video/ogg">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+            </div><!-- col -->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <h4><small><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></small></h4>
+            </div><!-- col -->
+          </div> <!-- row -->
+
+          <%- partial ('../transcript/_hypertranscript.ejs') %>
+
+          <!-- end tab content -->
+        </div> <!-- transcriptions -->
+
+      </div><!-- end col  -->
+  </div>
+
+
+  <!-- TODO: require paperedit js -->
