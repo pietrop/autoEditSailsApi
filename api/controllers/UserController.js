@@ -30,6 +30,8 @@ module.exports = require('waterlock').actions.user({
    */
   findOne: function(req, res) {
 
+		console.log( req.params.id);
+
     User.findOne({
       id: req.params.id
     }).exec(function(err, account) {
