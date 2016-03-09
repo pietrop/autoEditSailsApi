@@ -1,0 +1,14 @@
+
+<div id="oneTranscription">
+  <%- partial ('_search.ejs') %>
+   <article id=<%="transcription video._id " %>class="sortable transcription">
+     <!-- TODO add section tag if there is a transcript -->
+     <p>
+     <% project.transcripts.forEach(function(t){ %>
+       <%= "JSON.stringify(t)" %>
+          <span class="word not-read child" tcIn=<%=" w.startTime "%> tcOut=<%=" w.endTime "%> wordID=<%=" w.id "%> transcriptionId=<%="video._id "%> transcriptionSrc=<%=" video.filePathName"%> ><%=" w.text"%> </span>
+           <% "if w.text.indexOf('.') > -1" %>
+             </p>
+       <% }) %>
+   </article>
+</div>

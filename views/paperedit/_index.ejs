@@ -1,0 +1,22 @@
+
+  <button type="button" class="btn btn-success btn-xs">New Paperedit</button>
+<h2>Paperedits</h2>
+
+<% project.papredits.forEach(function(p){ %>
+<div class="media">
+  <!-- <div class="media-left media-middle">
+    <a href="#">
+      <img class="media-object" src="..." alt="...">
+    </a>
+  </div> -->
+  <div class="media-body">
+    <h4 class="media-heading"><%= p.name %>
+      <a  class="btn btn-primary btn-xs" href="/paperedit/show.html">show</a>
+      <a  class="btn btn-warning btn-xs" href="#">duplicate</a>
+      <button type="button" class="btn btn-danger btn-xs">delete</button>
+    </h4>
+    <%= p.description %>
+  </div>
+</div>
+<!-- New project -->
+ <% }) %>

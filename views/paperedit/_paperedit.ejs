@@ -1,0 +1,48 @@
+<h3><small>Paper edit</small> <%=" paperedit.name" %></h3>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 paperedit">
+
+  <canvas id="player-canvas"></canvas>
+</div><!--  col -->
+  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 paperedit">
+  <!-- TBC //not workign with current css -->
+  </div>
+
+  </div> <!-- row -->
+  <!-- Export -->
+  <div class="dropdown">
+    <button class="btn btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="glyphicon glyphicon-share-alt" aria-hidden="true"><!-- export -->
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li ><a href="#" onclick="saveEDLfile('EDL')"><span class="glyphicon glyphicon-list-alt" aria-hidden="true">   EDL</a></li>
+      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> XML</a></li>
+      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"> JSON</a></li>
+      <li role="separator" class="divider"></li>
+      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"> TXT</a></li>
+      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"> CSV</a></li>
+      <li role="separator" class="divider"></li>
+      <li class="disabled" ><a href="#"><span class="glyphicon glyphicon-film" aria-hidden="true"> MOV</a></li>
+      <li class="disabled" ><a href="#"><span class="glyphicon glyphicon-film" aria-hidden="true"> MP4</a></li>
+     <!--  <li role="separator" class="divider"></li>
+      <li class="disabled" ><a href="#"><span class="glyphicon glyphicon-cloud" aria-hidden="true"> YouTube</a></li>
+      <li class="disabled" ><a href="#"><span class="glyphicon glyphicon-cloud" aria-hidden="true"> Vimeo</a></li>
+      <li class="disabled" ><a href="#"><span class="glyphicon glyphicon-cloud" aria-hidden="true"> Twitter</a></li> -->
+    </ul>
+    <!-- belete btn -->
+    <button class="btn btn-sm btn-danger dropdown-toggle" type="button" onclick="deleteSelection()" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+
+    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" onclick=" playPapereditPreview()" ><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+    <button class="btn btn-sm btn-warning dropdown-toggle" type="button" onclick=" pausePapereditPreview()" ><span class="glyphicon glyphicon-pause" aria-hidden="true"></button>
+    <!-- <button class="btn btn-sm btn-primary dropdown-toggle" type="button" onclick=" stopPapereditPreview()" >Stop</button> -->
+  </div>
+  <!-- end export  -->
+
+
+<article id="paperedit" class="sortable">
+</article>
+
+  </div><!-- end col  -->
+</div> <!-- end row -->
+
+<!-- TODO: require paperedit js -->

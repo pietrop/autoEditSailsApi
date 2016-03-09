@@ -1,0 +1,20 @@
+<button type="button" class="btn btn-success btn-xs">New Transcript</button>
+<h2>Transcripts</h2>
+
+<% project.transcripts.forEach(function(t){ %>
+<div class="media">
+  <!-- <div class="media-left media-middle">
+    <a href="#">
+      <img class="media-object" src="..." alt="...">
+    </a>
+  </div> -->
+  <div class="media-body">
+    <h4 class="media-heading"><%= t.name %>
+        <a  class="btn btn-primary btn-xs" href="/transcript/show.html">show</a>
+      <button type="button" class="btn btn-danger btn-xs">delete</button>
+    </h4>
+    <%= t.description %>
+  </div>
+</div>
+<!-- New project -->
+ <% }) %>
