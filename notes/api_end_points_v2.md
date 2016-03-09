@@ -137,7 +137,7 @@ To view tags/annotation used in other transcripts of same project
 get /user/:userId/project/:projectId/annotation
 ```
 Annotation read index
-View list of annotations used in this transcript
+View list of annotations used in this transcripts
 ```
 get /user/:userId/project/:projectId/transcript/:transcriptId/annotation
 ```
