@@ -18,7 +18,16 @@ And [this][testTutorial] has been followed to setup a test enviroment in sails, 
 
 
 
+## Authentication
+Boilerplate repo for authentication with passport and sails js
+https://github.com/andrixb/sails_auth_passport_js
 
+
+## Contributors
+
+- Pietro Passarelli - [@pietropassarell](https://twitter.com/pietropassarell)    
+- Andrea Baldo - [@and_baldo](https://twitter.com/and_baldo)
+- Dan Zajdband - [@impronunciable](https://twitter.com/impronunciable)
 
 <!-- Links -->
 [testTutorial]: https://github.com/bredikhin/sailsjs-mocha-testing-barrels-fixtures-example
