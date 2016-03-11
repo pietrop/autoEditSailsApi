@@ -51,9 +51,7 @@ module.exports.routes = {
 = ROUTES FOR SIGNIN =
 ===============================================>>>>>*/
 
-  'GET  /login' : {
-    view: 'loginpage'
-  }
+  'GET /login'    :   'AuthController.login'
 ,
   'POST /login'   :   'AuthController.login'
 
@@ -61,23 +59,35 @@ module.exports.routes = {
 /*=============================================<<<<<*/
 ,
 /*=============================================>>>>>
-= ROUTES FOR SIGNUP =
+= ROUTES FOR REGISTER =
 ===============================================>>>>>*/
 
-  'GET  /signup' : {
-    view: 'signuppage'
-  }
+  'GET /register'  :   'AuthController.register'
 ,
-  'POST /signup'   :   'AuthController.signup'
+  // 'POST /signup'   :   'AuthController.signup'
 
 /*= End of ROUTES FOR SIGNUP =*/
 /*=============================================<<<<<*/
-,
+// ,
+
+
+
+
+'post /auth/local': 'AuthController.callback',
+'post /auth/local/:action': 'AuthController.callback',
+
+'get /auth/:provider': 'AuthController.provider',
+'get /auth/:provider/callback': 'AuthController.callback',
+'get /auth/:provider/:action': 'AuthController.callback',
+
+
+
 /*=============================================>>>>>
 = ROUTES FOR LOGOUT =
 ===============================================>>>>>*/
-
-  'POST /logout'   :   'AuthController.logout'
+  'GET /logout'       :   'AuthController.logout'
+// ,
+  // 'POST /logout'   :   'AuthController.logout'
 
 /*= End of ROUTES FOR LOGOUT =*/
 /*=============================================<<<<<*/
