@@ -5,18 +5,23 @@ var should = require('should');
 describe('UserController', function() {
   //User profile/account page
   describe('#read()', function() {
+
     it('should get a user object provided the user id', function (done) {
       request(sails.hooks.http.app)
         .get('/user/1')
-        // .expect(function(res) {
-        // console.log(res.body)
-          // should(res.body).be.exactly({});
-        // })
+        .expect('Content-Type', /json/)
         .expect(200,done);
     });
 
-
-    it('should return a no user found message if id doesn\'t have a match');
+    // it('should return a no user found message if id doesn\'t have a match', function (done) {
+    //   request(sails.hooks.http.app)
+    //     .get('/user/1')
+    //     // .expect(function(res) {
+    //     // console.log(res.body)
+    //       // should(res.body).be.exactly({});
+    //     // })
+    //     .expect(200,done);
+    // });
 
   });
 
