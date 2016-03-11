@@ -6,17 +6,21 @@
  * @docs        :: http://waterlock.ninja/documentation
  */
 
-module.exports = {
+var User = {
+  // Enforce model schema in the case of schemaless databases
+  schema: true,
 
-  attributes: require('waterlock').models.user.attributes({
+  attributes: {
 
     /* e.g.
     nickname: 'string'
     */
+    username  : { type: 'string', unique: true },
+    email     : { type: 'email',  unique: true },
+    passports : { collection: 'Passport', via: 'user' },
 
     name: 'string',
     lastname: 'string',
-    email: 'string',
     password: 'string',
 
     //  Belongs to Project
@@ -25,8 +29,7 @@ module.exports = {
       via: 'user' //attribute
     }
 
-  }),
-
-  beforeCreate: require('waterlock').models.user.beforeCreate,
-  beforeUpdate: require('waterlock').models.user.beforeUpdate
+  }
 };
+
+module.exports = User;

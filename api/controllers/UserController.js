@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-module.exports = require('waterlock').actions.user({
+module.exports = {
 
   /**
    * `UserController.create()`
@@ -103,4 +103,4 @@ module.exports = require('waterlock').actions.user({
     });
   }
 
-});
+};

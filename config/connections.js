@@ -33,16 +33,6 @@ module.exports.connections = {
   },
 
   /***************************************************************************
-  *                                                                          *Test database
-  *
- ***************************************************************************/
-
-  test: {
-    adapter: 'sails-memory'
-  },
-
-
-  /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *
   * http://en.wikipedia.org/wiki/MySQL                                       *
