@@ -53,7 +53,7 @@ module.exports.policies = {
    'auth': {
      '*': ['passport']
    },
-   //this is for API authorization
+   //this is for API authorization i.e.:
    'flash': {  
  'remoteHome': ['passport', 'bearerAuth']
 }

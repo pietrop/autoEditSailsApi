@@ -6,23 +6,23 @@
  */
 
 module.exports = {
-	hi: function (req, res) {
-	 return res.send("Hi there!");
- },
+    hi: function(req, res) {
+        return res.send("Hi there!");
+    },
 
- /**
- * Returns transcription from route`get /project/:projectId/media/:mediaId/transcript`
- */
- show: function (req, res) {
+    /**
+     * Returns transcription from route`get /project/:projectId/media/:mediaId/transcript`
+     */
+    show: function(req, res) {
 
-	Media.findOne(req.param('mediaId'))
-			.populate('transcript')
-			.exec(function(err, m){
-				return res.json(
-					 m.transcript[0]
-				);
-			});
+        Media.findOne(req.param('mediaId'))
+            .populate('transcript')
+            .exec(function(err, m) {
+                return res.json(
+                    m.transcript[0]
+                );
+            });
 
-}
+    }
 
 };
