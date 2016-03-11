@@ -86,7 +86,7 @@ module.exports.routes = {
 = ROUTES FOR USER ACCOUNT =
 ===============================================>>>>>*/
 
-  'GET  /user/'            :  'UserController.findAll'
+  'GET  /user'            :  'UserController.findAll'
 ,
   'POST /user/'            :  'UserController.create'   // through req.body
 ,
