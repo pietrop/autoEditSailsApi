@@ -1,15 +1,16 @@
 /**
-* User.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
-* TODO : add some validations http://sailsjs.org/documentation/concepts/models-and-orm/validations
-*/
+ * User
+ *
+ * @module      :: Model
+ * @description :: This is the base user model
+ * @docs        :: http://waterlock.ninja/documentation
+ */
 
 module.exports = {
 
-  attributes: {
-    name : { type: 'string' },
+  attributes: require('waterlock').models.user.attributes({
+    
+   name : { type: 'string' },
 
     lastname : { type: 'string' },
 
@@ -29,5 +30,8 @@ module.exports = {
     // }
 
 
-  }
+  }),
+  
+  beforeCreate: require('waterlock').models.user.beforeCreate,
+  beforeUpdate: require('waterlock').models.user.beforeUpdate
 };

@@ -22,6 +22,9 @@ And [this][testTutorial] has been followed to setup a test enviroment in sails, 
 Boilerplate repo for authentication with passport and sails js
 https://github.com/andrixb/sails_auth_passport_js
 
+
+
+
 ### Authentication - waterlock
 https://github.com/andrixb/sails_js_waterlock_js_auth_api
 
