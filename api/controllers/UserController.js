@@ -8,34 +8,37 @@
  * @docs        :: http://waterlock.ninja/documentation
  */
 
+var requestType = function(req, res) {
+    if (req.params == null || req.params == 0) {
+        if (req.body == null || req.body == 0) {
+            return res.send({ error: 'error' });
+        } else {
+            reqType = 'body';
+        }
+    } else {
+        reqType = 'params';
+    }
+
+    switch (reqType) {
+        case 'params':
+            return params = req.params.all();
+            break;
+        case 'body':
+            return params = req.body.all();
+            break;
+        default:
+            return params = {};
+    }
+};
+
+
+
 module.exports = require('waterlock').actions.user({
     /* e.g.
       action: function(req, res){
   
       }
     */
-    requestType: function(req, res){
-        if (req.params == null || req.params == 0) {
-            if (req.body == null || req.body == 0) {
-                return res.send({ error: 'error' });
-            } else {
-            reqType = 'body';
-            }
-        } else {
-            reqType = 'params';
-        }
-
-        switch (reqType) {
-            case 'params':
-                return params = req.params.all();
-                break;
-            case 'body':
-                return params = req.body.all();
-                break;
-            default:
-                return params = {};
-        }
-    },
     //TODO: write test case
     validateUsername: function(req, res) {
 
@@ -64,7 +67,7 @@ module.exports = require('waterlock').actions.user({
         var params = requestType(req, res);
 
         sails.log(params);
-        
+
         User.findOne({ name: params.email }).exec(function(err, user) {
             if (err) {
                 waterlock.logger.debug(err);
@@ -82,10 +85,10 @@ module.exports = require('waterlock').actions.user({
     // route to create user, user auth and associate them
     create: function(req, res) {
         //console.log("customsied!!!!!!");
-           var params = requestType(req, res);
+        var params = requestType(req, res);
 
         sails.log(params);
-           var auth = {
+        var auth = {
                 email: params.email,
                 password: params.password
             },
