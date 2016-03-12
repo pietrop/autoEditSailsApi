@@ -165,7 +165,7 @@ module.exports.routes = {
   // ,
   'GET /user/:userId/project/:projectId/annotation'                                             :   'AnnotationController.findAll'
 ,
-  'GET /user/:userId/project/:projectId/transcript/:transcriptId/annotation'                    :   'AnnotationController.findOne'
+  'GET /user/:userId/project/:projectId/transcript/:transcriptId/annotation/:annotationId'      :   'AnnotationController.findOne'
 ,
   'POST /user/:userId/project/:projectId/transcript/:transcriptId/annotation'                   :   'AnnotationController.create'
 ,

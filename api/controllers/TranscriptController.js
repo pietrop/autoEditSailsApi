@@ -18,23 +18,23 @@ module.exports = {
  /**
  * Returns transcription from route`get /project/:projectId/media/:mediaId/transcript`
  */
- show: function (req, res) {
+//  show: function (req, res) {
 
-	Media.findOne(req.param('mediaId'))
-			.populate('transcript')
-			.exec(function(err, m){
-				return res.json(
-					 m.transcript[0]
-				);
-			});
+// 	Media.findOne(req.param('mediaId'))
+// 			.populate('transcript')
+// 			.exec(function(err, m){
+// 				return res.json(
+// 					 m.transcript[0]
+// 				);
+// 			});
 
-},
+// },
 
  /*=====  End of Test  ======*/
 
 /*====================================================================================== 
 =  'POST /user/:userId/project/:projectId/transcript'   :                    create    =
-======================================================================================*/
+=======================================================================================*/
 
 create: function(req, res){
 	return res.ok('Transcript created');

@@ -19,141 +19,134 @@
 
 module.exports.policies = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Default policy for all controllers and actions (`true` allows public     *
-  * access)                                                                  *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Default policy for all controllers and actions (`true` allows public     *
+     * access)                                                                  *
+     *                                                                          *
+     ***************************************************************************/
 
-  '*': true,
+    '*': true,
 
-  /***************************************************************************
-  *                                                                          *
-  * Here's an example of mapping some policies to run before a controller    *
-  * and its actions                                                          *
-  *                                                                          *
-  ***************************************************************************/
-	// RabbitController: {
+    /***************************************************************************
+     *                                                                          *
+     * Here's an example of mapping some policies to run before a controller    *
+     * and its actions                                                          *
+     *                                                                          *
+     ***************************************************************************/
+    // RabbitController: {
 
-		// Apply the `false` policy as the default for all of RabbitController's actions
-		// (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
-		// '*': false,
+    // Apply the `false` policy as the default for all of RabbitController's actions
+    // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
+    // '*': false,
 
-		// For the action `nurture`, apply the 'isRabbitMother' policy
-		// (this overrides `false` above)
-		// nurture	: 'isRabbitMother',
+    // For the action `nurture`, apply the 'isRabbitMother' policy
+    // (this overrides `false` above)
+    // nurture  : 'isRabbitMother',
 
-		// Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
-		// before letting any users feed our rabbits
-		// feed : ['isNiceToAnimals', 'hasRabbitFood']
-	// }
-  // TranscriptController: {
-  //   'find': false,
-  //   'create': false,
-  //   'update': false,
-  //   'destroy': false,
-  //   'populate': false,
-  //   'add': false,
-  //   'remove': false,
-  //   '*': false
-  // }
+    // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
+    // before letting any users feed our rabbits
+    // feed : ['isNiceToAnimals', 'hasRabbitFood']
+    // }
+    // TranscriptController: {
+    //   'find': false,
+    //   'create': false,
+    //   'update': false,
+    //   'destroy': false,
+    //   'populate': false,
+    //   'add': false,
+    //   'remove': false,
+    //   '*': false
+    // }
 
-/**
-  
-    2 USER ROLES:
-    - admin
-    - normal
-  
-   */ 
-
-  
-  /*======================================================
-  =     Access criteria on UserController methods     =
-  =======================================================*/ 
-  
-  /**####################################################################                  
-  #                                                                     #
-  #             create | find | findOne | update | delete |  message    #
-  #                                                                     #
-  #  - admin       X       X       X         X       X          X       #
-  #                                                                     #
-  #  - normal              X       X                            X       #
-  #                                                                     #
-  #                                                                     #
-  #                                                                     #
-  #####################################################################*/  
-  
-  /*==========================================
-  =       Policy on UserController      =
-  ==========================================*/
-  
-  UserController:{
-
-    /* Test */
-    
-     admin:     ['isAdmin'],
-     restricted:['sessionAuth'],
-     open:true,
+    /**
+      
+        2 USER ROLES:
+        - admin
+        - normal
+      
+       */
 
 
-     
-     find:   ['sessionAuth'],
-     findOne:['sessionAuth'],
-     create: ['sessionAuth'],
-     update: ['sessionAuth'],
-     
+    /*======================================================
+    =     Access criteria on UserController methods     =
+    =======================================================*/
 
-     delete:    ['isAdmin'],
-     assignUser:['isAdmin']
+    /**####################################################################                  
+    #                                                                     #
+    #             create | find | findOne | update | delete |  message    #
+    #                                                                     #
+    #  - admin       X       X       X         X       X          X       #
+    #                                                                     #
+    #  - normal              X       X                            X       #
+    #                                                                     #
+    #                                                                     #
+    #                                                                     #
+    #####################################################################*/
 
-    
-   }
-  
-  /*=====  End of Policy on UserController  ======*/
-  
-  /*======================================================
-  =     Access criteria on ProjectController methods     =
-  =======================================================*/
-  
-  /**##################################################################################                   
-  #                                                                                   #
-  #             create | find | findOne | update | delete | addMedia |  assignUser    #
-  #                                                                                   #
-  #  - admin       X       X       X         X       X          X           X         #
-  #                                                                                   #
-  #  - normal      X       X       X         X                  X                     #
-  #                                                                                   #
-  #                                                                                   #
-  #                                                                                   #
-  ###################################################################################*/ 
+    /*==========================================
+    =           Policy on UserController       =
+    ==========================================*/
 
-  /*==========================================
-  =       Policy on ProjectController      =
-  ==========================================*/
-  
-  ProjectController:{
+    UserController: {
 
-    /* Test */
-    
-     admin:     ['isAdmin'],
-     restricted:['sessionAuth'],
-     open:true,
+        /* Test */
+
+        admin:      ['isAdmin'],
+        restricted: ['sessionAuth'],
+        open: true,
+
+        findAll: ['sessionAuth'],
+        findOne: ['sessionAuth'],
+        create:  ['sessionAuth'],
+        update:  ['sessionAuth'],
+        message: ['sessionAuth'],
+
+        delete: ['isAdmin'],
+
+    }
+
+    /*=====  End of Policy on UserController  ======*/
 
 
-     
-     find:    ['sessionAuth'],
-     findOne: ['sessionAuth'],
-     create:  ['sessionAuth'],
-     update:  ['sessionAuth'],
-     addMedia:['sessionAuth'],
+    /*======================================================
+    =     Access criteria on ProjectController methods     =
+    =======================================================*/
 
-     delete:    ['isAdmin'],
-     assignUser:['isAdmin']
+    /**##################################################################################                   
+    #                                                                                   #
+    #             create | find | findOne | update | delete |  assignUser               #
+    #                                                                                   #
+    #  - admin       X       X       X         X       X          X                     #
+    #                                                                                   #
+    #  - normal      X       X       X         X                                        #
+    #                                                                                   #
+    #                                                                                   #
+    #                                                                                   #
+    ###################################################################################*/
 
-    
-   }
-  
-  /*=====  End of Policy on ProjectController  ======*/
-  
+    /*==========================================
+    =        Policy on ProjectController       =
+    ==========================================*/
+
+    ProjectController: {
+
+        /* Test */
+
+        admin:      ['isAdmin'],
+        restricted: ['sessionAuth'],
+        open: true,
+
+        findAll: ['sessionAuth'],
+        findOne: ['sessionAuth'],
+        create:  ['sessionAuth'],
+        update:  ['sessionAuth'],
+
+        delete:     ['isAdmin'],
+        assignUser: ['isAdmin']
+
+    }
+
+    /*=====  End of Policy on ProjectController  ======*/
+
 };
