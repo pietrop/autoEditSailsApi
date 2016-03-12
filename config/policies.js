@@ -59,11 +59,68 @@ module.exports.policies = {
   //   '*': false
   // }
 
+
+  /**
+  
+    THREE USER ROLES:
+    - admin
+    - normal
+    - read
+   */ 
+
+  /*======================================================
+  =     Access criteria on ProjectController methods     =
+  =======================================================*/
+  
+   
+
+  /**##################################################################################                   
+  #                                                                                   #
+  #             create | find | findOne | update | delete | addMedia |  assignUser    #
+  #                                                                                   #
+  #  - admin       X       X       X         X       X          X           X         #
+  #                                                                                   #
+  #  - normal      X       X       X         X                  X                     #
+  #                                                                                   #
+  #  - read                X       X                                                  #
+  #                                                                                   #
+  ###################################################################################*/  
+  
+  
+
+
+  /*==========================================
+  =       Policy on ProjectController      =
+  ==========================================*/
+  
   ProjectController:{
+
+    /* Test */
+    
      admin:['isAdmin'],
-    restricted:['sessionAuth'],
-    open:true
-  }
+     restricted:['sessionAuth'],
+     open:true,
+
+
+     
+     find:   ['sessionAuth'],
+     findOne:['sessionAuth'],
+     create: ['sessionAuth'],
+     update: ['sessionAuth'],
+     addMedia:['sessionAuth'],
+
+     delete:['isAdmin', 'sessionAuth'],
+     assignUser:['isAdmin', 'sessionAuth']
+
+     
+
+   
+   }
+  
+  /*=====  End of Policy on ProjectController  ======*/
+  
+
+  
 
 
 };
