@@ -8,30 +8,62 @@
 
 module.exports = {
 
-  attributes: require('waterlock').models.user.attributes({
-    
-   name : { type: 'string' },
+   attributes: require('waterlock').models.user.attributes({
+    username:{
+      type:"string",
+      // required:true,
+      unique:true
+    },
+    //Password is not needed here
+    //password: {
+    //  type: "string",
+    //  required: true
+    //},
+    firstname:{
+      type: "string"
+      // ,
+      // required: true
+    },
+    lastname:{
+      type: "string"
+      // ,
+      // required: true
+    },
+    email:{
+      type: "string",
+      email: true,
+      // required: true,
+      unique: true
+    },
+    jsonWebTokens: {
+      collection: 'jwt',
+      via: 'owner'
+    },
+    enabled:{
+      type:'boolean',
+      defaultsTo:true
+    },
+    role:{
+      type:"string",
+      enum:['normal','admin','teacher'],
+      // required:true,
+      defaultsTo:"normal" //could be admin, normal
+    },
+     //  Belongs to Project
+        project: {
+            collection: 'project',
+            via: 'user' //attribute
+        }
 
-    lastname : { type: 'string' },
-
-    email : { type: 'string' },
-
-    password : { type: 'string' },
-
-    //  Belongs to Project
-    project: {
-      collection: 'project',
-      via: 'user'//attribute
-    }
-    // ,
-    // media: {
-    //   collection: 'project',
-    //   via: 'media'//attribute
-    // }
+        // media: {
+        //   collection: 'project',
+        //   via: 'media'//attribute
+        // },
 
 
   }),
   
   beforeCreate: require('waterlock').models.user.beforeCreate,
   beforeUpdate: require('waterlock').models.user.beforeUpdate
+
 };

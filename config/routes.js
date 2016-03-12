@@ -46,19 +46,19 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
+// TEST
 
-    
-    
-
-
+'GET /project/open' : 'ProjectController.open',
+'GET /project/admin' : 'ProjectController.admin',
+'GET /project/restricted' : 'ProjectController.restricted',
 
 /*=============================================>>>>>
-= ROUTES FOR SIGNIN =
+= ROUTES FOR LOGIN =
 ===============================================>>>>>*/
 
 'POST /auth/login': 'AuthController.login'
 
-/*= End of ROUTES FOR SIGNIN =*/
+/*= End of ROUTES FOR LOGIN =*/
 /*=============================================<<<<<*/
 ,
 /*=============================================>>>>>
@@ -84,9 +84,9 @@ module.exports.routes = {
 = ROUTES FOR USER ACCOUNT =
 ===============================================>>>>>*/
 
-  'GET  /user'            :  'UserController.findAll'
+  'GET  /user'             :  'UserController.findAll'
 ,
-  'POST /user/'            :  'UserController.create'   // through req.body
+  'POST /user'             :  'UserController.create'   // through req.body
 ,
   'GET  /user/:userId'     :  'UserController.findOne'
 ,

@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': true,
 
   /***************************************************************************
   *                                                                          *
@@ -59,8 +59,8 @@ module.exports.policies = {
   //   '*': false
   // }
 
- '*': true,
   ProjectController:{
+     admin:['isAdmin'],
     restricted:['sessionAuth'],
     open:true
   }
