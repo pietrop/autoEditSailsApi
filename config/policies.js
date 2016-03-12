@@ -69,7 +69,7 @@ module.exports.policies = {
 
 
     /*======================================================
-    =     Access criteria on UserController methods     =
+    =       Access criteria on UserController methods      =
     =======================================================*/
 
     /**####################################################################                  
@@ -95,6 +95,8 @@ module.exports.policies = {
         admin:      ['isAdmin'],
         restricted: ['sessionAuth'],
         open: true,
+        
+        /* ------- */
 
         findAll: ['sessionAuth'],
         findOne: ['sessionAuth'],
@@ -104,7 +106,7 @@ module.exports.policies = {
 
         delete: ['isAdmin'],
 
-    }
+    },
 
     /*=====  End of Policy on UserController  ======*/
 
@@ -136,6 +138,8 @@ module.exports.policies = {
         admin:      ['isAdmin'],
         restricted: ['sessionAuth'],
         open: true,
+
+        /* ------- */
 
         findAll: ['sessionAuth'],
         findOne: ['sessionAuth'],
