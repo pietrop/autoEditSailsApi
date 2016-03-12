@@ -125,7 +125,7 @@ module.exports.routes = {
 = ROUTES FOR PROJECT PANEL  =
 ===============================================>>>>>*/
 
-  'GET /user/:userId/project/:projectId/transcript/'                   :   'TranscriptController.list'
+  'GET /user/:userId/project/:projectId/transcript/'                   :   'TranscriptController.findAll'
 ,
   'GET /user/:userId/project/:projectId/transcript/:transcriptId'      :   'TranscriptController.findOne'
 ,
@@ -137,7 +137,7 @@ module.exports.routes = {
   'POST /user/:userId/project/:projectId/transcript'                   :   'TranscriptController.create'
 
 ,
-  'GET /user/:userId/project/:projectId/paperedit'                   :   'PapereditController.list'
+  'GET /user/:userId/project/:projectId/paperedit'                   :   'PapereditController.findAll'
 ,
   'GET /user/:userId/project/:projectId/paperedit/:papereditId'      :   'PapereditController.findOne'
 ,
@@ -163,7 +163,7 @@ module.exports.routes = {
 
   // 'GET user/:userId/project/:projectId/transcript/:transcriptId'  : 'TranscriptController.findOne'
   // ,
-  'GET /user/:userId/project/:projectId/annotation'                                             :   'AnnotationController.list'
+  'GET /user/:userId/project/:projectId/annotation'                                             :   'AnnotationController.findAll'
 ,
   'GET /user/:userId/project/:projectId/transcript/:transcriptId/annotation'                    :   'AnnotationController.findOne'
 ,

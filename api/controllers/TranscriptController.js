@@ -6,8 +6,13 @@
  */
 
 module.exports = {
-	hi: function (req, res) {
-	 return res.send("Hi there!");
+ 
+ /*============================
+ =            Test            =
+ ============================*/
+
+ ping: function (req, res) {
+	 return res.send("pong!");
  },
 
  /**
@@ -23,6 +28,60 @@ module.exports = {
 				);
 			});
 
+},
+
+ /*=====  End of Test  ======*/
+
+/*====================================================================================== 
+=  'POST /user/:userId/project/:projectId/transcript'   :                    create    =
+======================================================================================*/
+
+create: function(req, res){
+	return res.ok('Transcript created');
+},
+
+/*=====  End of create  ======*/
+
+/*=======================================================================================
+=   'GET /user/:userId/project/:projectId/transcript/'   :                   findAll    =
+========================================================================================*/
+
+findAll: function(req, res){
+	return res.ok('All Transcripts listed');
+},
+
+/*=====  End of findAll  ======*/
+
+/*=======================================================================================
+=  'GET /user/:userId/project/:projectId/transcript/:transcriptId'      :    findOne    =
+========================================================================================*/
+
+findOne: function(req, res){
+	return res.ok('Transcript listed');
+},
+
+/*=====  End of findOne  ======*/
+
+/*=======================================================================================
+=  'PUT /user/:userId/project/:projectId/transcript/:transcriptId'      :     update    =
+========================================================================================*/
+
+update: function(req, res){
+	return res.ok('Transcript updated');
+},
+
+/*=====  End of update  ======*/
+
+/*=======================================================================================
+=  'DELETE /user/:userId/project/:projectId/transcript/:transcriptId'   :     delete    =
+========================================================================================*/
+
+delete: function(req, res){
+	return res.ok('Transcript deleted');
 }
+
+/*=====  End of delete  ======*/
+
+
 
 };

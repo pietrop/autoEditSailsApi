@@ -59,45 +59,40 @@ module.exports.policies = {
   //   '*': false
   // }
 
-
-  /**
+/**
   
-    THREE USER ROLES:
+    2 USER ROLES:
     - admin
     - normal
-    - read
+  
    */ 
 
+  
   /*======================================================
-  =     Access criteria on ProjectController methods     =
-  =======================================================*/
+  =     Access criteria on UserController methods     =
+  =======================================================*/ 
   
-   
-
-  /**##################################################################################                   
-  #                                                                                   #
-  #             create | find | findOne | update | delete | addMedia |  assignUser    #
-  #                                                                                   #
-  #  - admin       X       X       X         X       X          X           X         #
-  #                                                                                   #
-  #  - normal      X       X       X         X                  X                     #
-  #                                                                                   #
-  #  - read                X       X                                                  #
-  #                                                                                   #
-  ###################################################################################*/  
+  /**####################################################################                  
+  #                                                                     #
+  #             create | find | findOne | update | delete |  message    #
+  #                                                                     #
+  #  - admin       X       X       X         X       X          X       #
+  #                                                                     #
+  #  - normal              X       X                            X       #
+  #                                                                     #
+  #                                                                     #
+  #                                                                     #
+  #####################################################################*/  
   
-  
-
-
   /*==========================================
-  =       Policy on ProjectController      =
+  =       Policy on UserController      =
   ==========================================*/
   
-  ProjectController:{
+  UserController:{
 
     /* Test */
     
-     admin:['isAdmin'],
+     admin:     ['isAdmin'],
      restricted:['sessionAuth'],
      open:true,
 
@@ -107,20 +102,58 @@ module.exports.policies = {
      findOne:['sessionAuth'],
      create: ['sessionAuth'],
      update: ['sessionAuth'],
-     addMedia:['sessionAuth'],
-
-     delete:['isAdmin', 'sessionAuth'],
-     assignUser:['isAdmin', 'sessionAuth']
-
      
 
-   
+     delete:    ['isAdmin'],
+     assignUser:['isAdmin']
+
+    
+   }
+  
+  /*=====  End of Policy on UserController  ======*/
+  
+  /*======================================================
+  =     Access criteria on ProjectController methods     =
+  =======================================================*/
+  
+  /**##################################################################################                   
+  #                                                                                   #
+  #             create | find | findOne | update | delete | addMedia |  assignUser    #
+  #                                                                                   #
+  #  - admin       X       X       X         X       X          X           X         #
+  #                                                                                   #
+  #  - normal      X       X       X         X                  X                     #
+  #                                                                                   #
+  #                                                                                   #
+  #                                                                                   #
+  ###################################################################################*/ 
+
+  /*==========================================
+  =       Policy on ProjectController      =
+  ==========================================*/
+  
+  ProjectController:{
+
+    /* Test */
+    
+     admin:     ['isAdmin'],
+     restricted:['sessionAuth'],
+     open:true,
+
+
+     
+     find:    ['sessionAuth'],
+     findOne: ['sessionAuth'],
+     create:  ['sessionAuth'],
+     update:  ['sessionAuth'],
+     addMedia:['sessionAuth'],
+
+     delete:    ['isAdmin'],
+     assignUser:['isAdmin']
+
+    
    }
   
   /*=====  End of Policy on ProjectController  ======*/
   
-
-  
-
-
 };
