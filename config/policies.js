@@ -90,21 +90,13 @@ module.exports.policies = {
 
     UserController: {
 
-        /* Test */
-
-        admin:      ['isAdmin'],
-        restricted: ['sessionAuth'],
-        open: true,
-        
-        /* ------- */
-
         findAll: ['sessionAuth'],
         findOne: ['sessionAuth'],
         create:  ['sessionAuth'],
         update:  ['sessionAuth'],
         message: ['sessionAuth'],
 
-        delete: ['isAdmin'],
+        delete:  ['isAdmin'],
 
     },
 
@@ -115,17 +107,17 @@ module.exports.policies = {
     =     Access criteria on ProjectController methods     =
     =======================================================*/
 
-    /**##################################################################################                   
-    #                                                                                   #
-    #             create | find | findOne | update | delete |  assignUser               #
-    #                                                                                   #
-    #  - admin       X       X       X         X       X          X                     #
-    #                                                                                   #
-    #  - normal      X       X       X         X                                        #
-    #                                                                                   #
-    #                                                                                   #
-    #                                                                                   #
-    ###################################################################################*/
+    /**#####################################################################                   
+    #                                                                      #
+    #             create | find | findOne | update | delete |  assignUser  #
+    #                                                                      #
+    #  - admin       X       X       X         X       X          X        #
+    #                                                                      #
+    #  - normal      X       X       X         X                           #
+    #                                                                      #
+    #                                                                      #
+    #                                                                      #
+    ######################################################################*/
 
     /*==========================================
     =        Policy on ProjectController       =
@@ -149,8 +141,41 @@ module.exports.policies = {
         delete:     ['isAdmin'],
         assignUser: ['isAdmin']
 
-    }
+    },
 
     /*=====  End of Policy on ProjectController  ======*/
+
+    /*=========================================================
+    =     Access criteria on TranscriptController methods     =
+    ==========================================================*/
+
+    /**#####################################################################                   
+    #                                                                      #
+    #             create | find | findOne | update | delete |              #
+    #                                                                      #
+    #  - admin       X       X       X         X       X                   #
+    #                                                                      #
+    #  - normal      X       X       X         X       X                   #
+    #                                                                      #
+    #                                                                      #
+    #                                                                      #
+    ######################################################################*/
+
+    /*==========================================
+    =       Policy on TranscriptController     =
+    ==========================================*/
+
+    TranscriptController: {
+
+        findAll: ['sessionAuth'],
+        findOne: ['sessionAuth'],
+        create:  ['sessionAuth'],
+        update:  ['sessionAuth'],
+
+        delete:  ['sessionAuth']
+
+    }
+
+    /*=====  End of Policy on TranscriptController  ======*/
 
 };
