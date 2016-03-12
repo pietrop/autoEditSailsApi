@@ -59,7 +59,11 @@ module.exports.policies = {
   //   '*': false
   // }
 
-
+ '*': true,
+  ProjectController:{
+    restricted:['sessionAuth'],
+    open:true
+  }
 
 
 };
