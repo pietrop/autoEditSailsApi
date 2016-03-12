@@ -7,26 +7,26 @@
 
 module.exports = {
 
- /*============================
- =            Test            =
- ============================*/
+    /*============================
+    =            Test            =
+    ============================*/
 
- ping: function (req, res) {
-	 return res.send("pong!");
- },
+    ping: function(req, res) {
+        return res.send("pong!");
+    },
 
- /*=====  End of Test  ======*/
+    /*=====  End of Test  ======*/
 
 
-/*===============================================================
-=   'POST /user/:userId/project/:projectId/media' :   upload    =
-================================================================*/
+    /*===============================================================
+    =   'POST /user/:userId/project/:projectId/media' :   upload    =
+    ================================================================*/
 
-upload: function(req, res){
-	return res.ok('media uploaded');
-}
+    upload: function(req, res) {
+        return res.ok('media uploaded');
+    }
 
-/*=====  End of upload  ======*/
+    /*=====  End of upload  ======*/
 
 
 

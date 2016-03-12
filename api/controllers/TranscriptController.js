@@ -6,81 +6,81 @@
  */
 
 module.exports = {
- 
- /*============================
- =            Test            =
- ============================*/
 
- ping: function (req, res) {
-	 return res.send("pong!");
- },
+    /*============================
+    =            Test            =
+    ============================*/
 
- /**
- * Returns transcription from route`get /project/:projectId/media/:mediaId/transcript`
- */
-//  show: function (req, res) {
+    ping: function(req, res) {
+        return res.send("pong!");
+    },
 
-// 	Media.findOne(req.param('mediaId'))
-// 			.populate('transcript')
-// 			.exec(function(err, m){
-// 				return res.json(
-// 					 m.transcript[0]
-// 				);
-// 			});
+    /**
+     * Returns transcription from route`get /project/:projectId/media/:mediaId/transcript`
+     */
+    //  show: function (req, res) {
 
-// },
+    // 	Media.findOne(req.param('mediaId'))
+    // 			.populate('transcript')
+    // 			.exec(function(err, m){
+    // 				return res.json(
+    // 					 m.transcript[0]
+    // 				);
+    // 			});
 
- /*=====  End of Test  ======*/
+    // },
 
-/*====================================================================================== 
-=  'POST /user/:userId/project/:projectId/transcript'   :                    create    =
-=======================================================================================*/
+    /*=====  End of Test  ======*/
 
-create: function(req, res){
-	return res.ok('Transcript created');
-},
+    /*====================================================================================== 
+    =  'POST /user/:userId/project/:projectId/transcript'   :                    create    =
+    =======================================================================================*/
 
-/*=====  End of create  ======*/
+    create: function(req, res) {
+        return res.ok('Transcript created');
+    },
 
-/*=======================================================================================
-=   'GET /user/:userId/project/:projectId/transcript/'   :                   findAll    =
-========================================================================================*/
+    /*=====  End of create  ======*/
 
-findAll: function(req, res){
-	return res.ok('All Transcripts listed');
-},
+    /*=======================================================================================
+    =   'GET /user/:userId/project/:projectId/transcript/'   :                   findAll    =
+    ========================================================================================*/
 
-/*=====  End of findAll  ======*/
+    findAll: function(req, res) {
+        return res.ok('All Transcripts listed');
+    },
 
-/*=======================================================================================
-=  'GET /user/:userId/project/:projectId/transcript/:transcriptId'      :    findOne    =
-========================================================================================*/
+    /*=====  End of findAll  ======*/
 
-findOne: function(req, res){
-	return res.ok('Transcript listed');
-},
+    /*=======================================================================================
+    =  'GET /user/:userId/project/:projectId/transcript/:transcriptId'      :    findOne    =
+    ========================================================================================*/
 
-/*=====  End of findOne  ======*/
+    findOne: function(req, res) {
+        return res.ok('Transcript listed');
+    },
 
-/*=======================================================================================
-=  'PUT /user/:userId/project/:projectId/transcript/:transcriptId'      :     update    =
-========================================================================================*/
+    /*=====  End of findOne  ======*/
 
-update: function(req, res){
-	return res.ok('Transcript updated');
-},
+    /*=======================================================================================
+    =  'PUT /user/:userId/project/:projectId/transcript/:transcriptId'      :     update    =
+    ========================================================================================*/
 
-/*=====  End of update  ======*/
+    update: function(req, res) {
+        return res.ok('Transcript updated');
+    },
 
-/*=======================================================================================
-=  'DELETE /user/:userId/project/:projectId/transcript/:transcriptId'   :     delete    =
-========================================================================================*/
+    /*=====  End of update  ======*/
 
-delete: function(req, res){
-	return res.ok('Transcript deleted');
-}
+    /*=======================================================================================
+    =  'DELETE /user/:userId/project/:projectId/transcript/:transcriptId'   :     delete    =
+    ========================================================================================*/
 
-/*=====  End of delete  ======*/
+    delete: function(req, res) {
+        return res.ok('Transcript deleted');
+    }
+
+    /*=====  End of delete  ======*/
 
 
 

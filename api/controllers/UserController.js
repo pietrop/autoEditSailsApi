@@ -14,10 +14,36 @@ module.exports = require('waterlock').actions.user({
   
       }
     */
+    requestType: function(req, res){
+        if (req.params == null || req.params == 0) {
+            if (req.body == null || req.body == 0) {
+                return res.send({ error: 'error' });
+            } else {
+            reqType = 'body';
+            }
+        } else {
+            reqType = 'params';
+        }
 
+        switch (reqType) {
+            case 'params':
+                return params = req.params.all();
+                break;
+            case 'body':
+                return params = req.body.all();
+                break;
+            default:
+                return params = {};
+        }
+    },
     //TODO: write test case
     validateUsername: function(req, res) {
-        var params = req.params.all();
+
+        var params = requestType(req, res);
+
+        sails.log(params);
+
+        // var params = req.params.all();
         User.findOne({ name: params.username }).exec(function(err, user) {
             if (err) {
                 waterlock.logger.debug(err);
@@ -35,7 +61,10 @@ module.exports = require('waterlock').actions.user({
     //TODO: write test case
     //TODO: write it up
     validateEmail: function(req, res) {
-        var params = req.params.all();
+        var params = requestType(req, res);
+
+        sails.log(params);
+        
         User.findOne({ name: params.email }).exec(function(err, user) {
             if (err) {
                 waterlock.logger.debug(err);
@@ -53,8 +82,10 @@ module.exports = require('waterlock').actions.user({
     // route to create user, user auth and associate them
     create: function(req, res) {
         //console.log("customsied!!!!!!");
-        var params = req.params.all(),
-            auth = {
+           var params = requestType(req, res);
+
+        sails.log(params);
+           var auth = {
                 email: params.email,
                 password: params.password
             },

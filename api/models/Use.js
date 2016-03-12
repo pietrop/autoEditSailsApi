@@ -8,11 +8,11 @@
 
 module.exports = {
 
-  attributes: require('waterlock').models.use.attributes({
-    
-    /* e.g.
-    nickname: 'string'
-    */
-    
-  })
+    attributes: require('waterlock').models.use.attributes({
+
+        /* e.g.
+        nickname: 'string'
+        */
+
+    })
 };

@@ -1,27 +1,27 @@
 /**
-* Transcript.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
-*/
+ * Transcript.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/#!documentation/models
+ */
 
 module.exports = {
 
-  attributes: {
-    name : { type: 'string' },
+    attributes: {
+        name: { type: 'string' },
 
-    description : { type: 'string' },
+        description: { type: 'string' },
 
-    paragraph : { type: 'array' },
-    //   Has many Annotations
+        paragraph: { type: 'array' },
+        //   Has many Annotations
 
-    // Has and belong to many speakers
+        // Has and belong to many speakers
 
-    //belongs to media
-    hmedia:{
-      model: 'media',
-      unique: true
+        //belongs to media
+        hmedia: {
+            model: 'media',
+            unique: true
+        }
+
     }
-
-  }
 };

@@ -7,32 +7,31 @@
 
 module.exports = {
 
-  attributes: {
+    attributes: {
 
-    name : { type: 'string' },
+        name: { type: 'string' },
 
-    description : { type: 'string' },
+        description: { type: 'string' },
 
-    date : { type: 'date' },
+        date: { type: 'date' },
 
-    // Has many Users
-   user: {
-     model: 'user'
-   },
-   //Has many medias
-   media: {
-     collection: 'media',
-     via: 'clip'
-   }
+        // Has many Users
+        user: {
+            model: 'user'
+        },
+        //Has many medias
+        media: {
+            collection: 'media',
+            via: 'clip'
+        }
 
-   //Has many Transcripts through Medias
+        //Has many Transcripts through Medias
 
-  // Has many Annotations through Transcripts
+        // Has many Annotations through Transcripts
 
-  // Has many Speakers
+        // Has many Speakers
 
-  // Has many Paperedit Annotation
+        // Has many Paperedit Annotation
 
-  }
+    }
 };
-

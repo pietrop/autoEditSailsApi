@@ -7,65 +7,65 @@
 
 module.exports = {
 
-/*============================
- =            Test           =
- ============================*/
+    /*============================
+     =            Test           =
+     ============================*/
 
- ping: function (req, res) {
-	 return res.send("pong!");
- },
+    ping: function(req, res) {
+        return res.send("pong!");
+    },
 
- /*=====  End of Test  ======*/
+    /*=====  End of Test  ======*/
 
-/*=======================================================================================
-=  'POST /user/:userId/project/:projectId/paperedit'         :             create       =
-========================================================================================*/
+    /*=======================================================================================
+    =  'POST /user/:userId/project/:projectId/paperedit'         :             create       =
+    ========================================================================================*/
 
- create: function (req, res) {
-	 return res.ok("created");
- },
+    create: function(req, res) {
+        return res.ok("created");
+    },
 
-/*=====  End of create  ======*/
+    /*=====  End of create  ======*/
 
-/*=======================================================================================
-=  'GET /user/:userId/project/:projectId/paperedit'            :           findAll      =
-========================================================================================*/
+    /*=======================================================================================
+    =  'GET /user/:userId/project/:projectId/paperedit'            :           findAll      =
+    ========================================================================================*/
 
-findAll: function (req, res) {
-	 return res.ok("listed");
- },
+    findAll: function(req, res) {
+        return res.ok("listed");
+    },
 
-/*=====  End of findAll  ======*/
+    /*=====  End of findAll  ======*/
 
-/*=======================================================================================
-=  'GET /user/:userId/project/:projectId/paperedit/:papereditId'    :      findOne      =
-========================================================================================*/
+    /*=======================================================================================
+    =  'GET /user/:userId/project/:projectId/paperedit/:papereditId'    :      findOne      =
+    ========================================================================================*/
 
-findOne: function (req, res) {
-	 return res.ok("listed");
- },
+    findOne: function(req, res) {
+        return res.ok("listed");
+    },
 
-/*=====  End of findOne  ======*/
+    /*=====  End of findOne  ======*/
 
-/*=======================================================================================
-=  'PUT /user/:userId/project/:projectId/paperedit/:papereditId'    :       update      =
-========================================================================================*/
+    /*=======================================================================================
+    =  'PUT /user/:userId/project/:projectId/paperedit/:papereditId'    :       update      =
+    ========================================================================================*/
 
-update: function (req, res) {
-	 return res.ok("updated");
- },
+    update: function(req, res) {
+        return res.ok("updated");
+    },
 
-/*=====  End of update  ======*/
+    /*=====  End of update  ======*/
 
-/*=======================================================================================
-=  'DELETE /user/:userId/project/:projectId/paperedit/:papereditId'    :     delete     =
-========================================================================================*/
+    /*=======================================================================================
+    =  'DELETE /user/:userId/project/:projectId/paperedit/:papereditId'    :     delete     =
+    ========================================================================================*/
 
-delete: function (req, res) {
-	 return res.ok("deleted");
- }
+    delete: function(req, res) {
+        return res.ok("deleted");
+    }
 
-/*=====  End of delete  ======*/
+    /*=====  End of delete  ======*/
 
 
 };
