@@ -136,6 +136,25 @@
          return res.send({ success: false });
      },
 
-```js
+### Update
 
+```js
+   update: function(req, res) {
+
+        User.update({
+                id: req.session.user.id
+            },
+            req.body,
+            function(err, users) {
+                // Error handling
+                if (err) {
+                    console.log(err);
+                    return res.send(err);
+                    // Updated users successfully!
+                } else {
+                    console.log("Users updated:", users);
+                    return res.json('user updated');
+                }
+            });
+    },
  ```   
