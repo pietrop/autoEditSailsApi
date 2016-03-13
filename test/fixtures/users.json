@@ -1,14 +1,16 @@
 [
   {
-    "name":"LongJon",
+    "firstname":"LongJon",
     "lastname":"Silver",
     "email":"LongJon@Silver.com",
+    "username":"LJ",
     "password":"TreasureIsland"
   },
   {
-    "name":"Jack",
+    "firstname":"Jack",
     "lastname":"Sparrow",
     "email":"Jack@sparrow.com",
+    "username":"JS",
     "password":"Carribean"
   }
 ]

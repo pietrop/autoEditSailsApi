@@ -32,7 +32,7 @@ before(function(done) {
      barrels.populate(function(err) {
 
       var data = barrels.data;
-      console.log(JSON.stringify(data));
+      // console.log(JSON.stringify(data));
 
        for(var i=0; i<data.users.length; i++){
          //creating test objects from `/test/fixtures/users.json`
