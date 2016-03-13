@@ -13,7 +13,7 @@ module.exports = require('waterlock').actions.user({
     /*===============================================================
     =   'GET /user' :   findOne    =
     ================================================================*/
-    
+
     findOne: function(req, res) {
         // var params = req.params.all();
         // console.log('session: ' + JSON.stringify(req.session.user.id));
@@ -53,9 +53,9 @@ module.exports = require('waterlock').actions.user({
 
     /*=====  End of findAll  ======*/
 
-   /*===============================================================
-    =   'PUT /user' :   update    =
-    ================================================================*/
+    /*===============================================================
+     =   'PUT /user' :   update    =
+     ================================================================*/
     update: function(req, res) {
 
         User.update({
@@ -82,18 +82,22 @@ module.exports = require('waterlock').actions.user({
     ================================================================*/
     delete: function(req, res) {
 
-        User.destroy({
-            id: req.session.user.id
-        }).exec(function(err) {
-            if (err) {
-                return res.negotiate(err);
-            }
-            sails.log('Deleted user, if it existed.');
-            return res.json({
-                success: 'Deleted user, if it existed.'
-            });
+            User.destroy({
+                id: req.session.user.id
+            }).exec(function(err) {
+                if (err) {
+                    return res.negotiate(err);
+                }
+                sails.log('Deleted user, if it existed.');
+                req.session.destroy(function(err) {
+                    if (err)
+                        return res.negotiate(err);
+                });
+                return res.json({
+                    success: 'Deleted user, if it existed.'
+                });
 
-        });
-    }
-    /*=====  End of delete  ======*/
+            });
+        }
+        /*=====  End of delete  ======*/
 });
