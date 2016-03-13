@@ -56,7 +56,7 @@ module.exports.routes = {
 = ROUTES FOR LOGIN =
 ===============================================>>>>>*/
 
-'POST /auth/login': 'AuthController.login'
+'POST /auth/login' : 'AuthController.login'
 
 /*= End of ROUTES FOR LOGIN =*/
 /*=============================================<<<<<*/
@@ -65,7 +65,7 @@ module.exports.routes = {
 = ROUTES FOR REGISTER =
 ===============================================>>>>>*/
 
-'POST /auth/register': 'AuthController.register'
+'POST /auth/register' : 'AuthController.register'
 
 /*= End of ROUTES FOR REGISTER =*/
 /*=============================================<<<<<*/
@@ -75,7 +75,7 @@ module.exports.routes = {
 = ROUTES FOR LOGOUT =
 ===============================================>>>>>*/
 
-'POST /auth/logout': 'AuthController.logout'
+'POST /auth/logout' : 'AuthController.logout'
 
 /*= End of ROUTES FOR LOGOUT =*/
 /*=============================================<<<<<*/

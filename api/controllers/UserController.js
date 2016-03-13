@@ -8,28 +8,30 @@
  * @docs        :: http://waterlock.ninja/documentation
  */
 
-var requestType = function(req, res) {
-    if (req.params == null || req.params == 0) {
-        if (req.body == null || req.body == 0) {
-            return res.send({ error: 'error' });
-        } else {
-            reqType = 'body';
-        }
-    } else {
-        reqType = 'params';
-    }
+// var requestType = function(req, res) {
+//     if (req.params == null || req.params == 0) {
+//         if (req.body == null || req.body == 0) {
+//             return res.send({ error: 'error' });
+//         } else {
+//             reqType = 'body';
+//         }
+//     } else {
+//         reqType = 'params';
+//     }
 
-    switch (reqType) {
-        case 'params':
-            return params = req.params.all();
-            break;
-        case 'body':
-            return params = req.body.all();
-            break;
-        default:
-            return params = {};
-    }
-};
+//     switch (reqType) {
+//         case 'params':
+//             console.log('PARAMS');
+//             return params = req.params.all();
+//             break;
+//         case 'body':
+//             console.log('BODY');
+//             return params = req.body;
+//             break;
+//         default:
+//             return params = {};
+//     }
+// };
 
 
 
@@ -39,67 +41,66 @@ module.exports = require('waterlock').actions.user({
   
       }
     */
-    //TODO: write test case
-    validateUsername: function(req, res) {
+    // //TODO: write test case
+    // validateUsername: function(req, res) {
 
-        var params = requestType(req, res);
+    //     var params = req.params.all();
 
-        sails.log(params);
+    //     // var params = req.params.all();
+    //     User.findOne({ name: params.username }).exec(function(err, user) {
+    //         if (err) {
+    //             waterlock.logger.debug(err);
+    //             res.serverError();
+    //         }
+    //         if (!user) {
 
-        // var params = req.params.all();
-        User.findOne({ name: params.username }).exec(function(err, user) {
-            if (err) {
-                waterlock.logger.debug(err);
-                res.serverError();
-            }
-            if (!user) {
+    //             return res.ok({ valid: true });
+    //         } else {
+    //             sails.log.error('Name is in use!');
+    //             return res.ok({ valid: false });
+    //         }
+    //     });
+    // },
+    // //TODO: write test case
+    // //TODO: write it up
+    // validateEmail: function(req, res) {
+    //     var params = req.params.all();
 
-                return res.ok({ valid: true });
-            } else {
-                sails.log.error('Name is in use!');
-                return res.ok({ valid: false });
-            }
-        });
-    },
-    //TODO: write test case
-    //TODO: write it up
-    validateEmail: function(req, res) {
-        var params = requestType(req, res);
+    //     User.findOne({ name: params.email }).exec(function(err, user) {
+    //         if (err) {
+    //             waterlock.logger.debug(err);
+    //             res.serverError();
+    //         }
+    //         if (!user) {
 
-        sails.log(params);
-
-        User.findOne({ name: params.email }).exec(function(err, user) {
-            if (err) {
-                waterlock.logger.debug(err);
-                res.serverError();
-            }
-            if (!user) {
-
-                return res.ok({ valid: true });
-            } else {
-                sails.log.error('Name is in use!');
-                return res.ok({ valid: false });
-            }
-        });
-    },
+    //             return res.ok({ valid: true });
+    //         } else {
+    //             sails.log.error('Name is in use!');
+    //             return res.ok({ valid: false });
+    //         }
+    //     });
+    // },
     // route to create user, user auth and associate them
     create: function(req, res) {
         //console.log("customsied!!!!!!");
-        var params = requestType(req, res);
-
-        sails.log(params);
+        var params = req.params.all();
         var auth = {
-                email: params.email,
-                password: params.password
-            },
-            userObj = {
-                username: params.username,
-                firstname: params.firstname,
-                lastname: params.lastname,
-                email: params.email
-            };
+            email: params.email,
+            password: params.password
+        };
+        // userObj = {
+        //     username: params.username,
+        //     firstname: params.firstname,
+        //     lastname: params.lastname,
+        //     email: params.email
+        // };
 
-        User.create(userObj)
+
+        User.create({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password
+            })
             .exec(function(err, user) {
                 if (err) {
                     waterlock.logger.debug(err);
@@ -133,15 +134,15 @@ module.exports = require('waterlock').actions.user({
                 });
             });
     },
-    show: function(req, res) { //won't see unless the owner
+    // show: function(req, res) { //won't see unless the owner
 
-    },
-    login_fail: function(req, res) {
-        return res.send({ success: false });
-    },
-    logout_fail: function(req, res) {
-        return res.send({ success: false });
-    },
+    // },
+    // login_fail: function(req, res) {
+    //     return res.send({ success: false });
+    // },
+    // logout_fail: function(req, res) {
+    //     return res.send({ success: false });
+    // },
 
 
     /**
@@ -166,12 +167,10 @@ module.exports = require('waterlock').actions.user({
      * `UserController.findOne()`
      */
     findOne: function(req, res) {
+        var params = req.params.all();
+        console.log(req.params);
 
-        console.log(req.params.id);
-
-        User.findOne({
-            id: req.params.id
-        }).exec(function(err, account) {
+        User.findOne(req.params).exec(function(err, account) {
             if (err) {
                 return res.send(err);
             }
@@ -182,6 +181,15 @@ module.exports = require('waterlock').actions.user({
             return res.json(account);
         });
     },
+
+    // Media.findOne(req.param('mediaId'))
+    //          .populate('transcript')
+    //          .exec(function(err, m){
+    //              return res.json(
+    //                   m.transcript[0]
+    //              );
+
+
 
     /**
      * `UserController.findAll()`
