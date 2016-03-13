@@ -8,6 +8,8 @@
  * @docs        :: http://waterlock.ninja/documentation
  */
 
+// var actionUtil = require('../../node_modules/sails/lib/hooks/blueprints/actionUtil');
+
 module.exports = require('waterlock').actions.user({
 
     /*===============================================================
@@ -82,24 +84,32 @@ module.exports = require('waterlock').actions.user({
     ================================================================*/
     delete: function(req, res) {
 
-            User.destroy({
-                id: req.session.user.id
-            }).exec(function(err) {
-                if (err) {
-                    return res.negotiate(err);
-                }
-                sails.log('Deleted user, if it existed.');
-                // req.session.destroy(function(err) {
-                //     if (err)
-                //         return res.negotiate(err);
-                //     res.redirect('/');
-                // });
-                req.logOut();
-                return res.json({
-                    success: 'Deleted user, if it existed.'
-                });
+        User.findOne({ id: req.session.user.id }).exec(function foundRecord(err, record) {
+            if (err) return res.serverError(err);
+            if (!record) return res.notFound('No record found with the specified `id`.');
 
+            User.destroy({ id: req.session.user.id }).exec(function destroyedRecord(err) {
+                if (err) return res.negotiate(err);
+
+                // if (sails.hooks.pubsub) {
+                //     User.publishDestroy(pk, !sails.config.blueprints.mirror && req, { previous: record });
+                if (req.isSocket) {
+                    User.unsubscribe(req, record);
+                    User.retire(record);
+                }
             });
-        }
-        /*=====  End of delete  ======*/
+
+            return res.json({
+                success: 'Deleted user, if it existed.'
+            });
+        });
+    }
+
+
+    /*=====  End of delete  ======*/
+
+
+
+
+
 });

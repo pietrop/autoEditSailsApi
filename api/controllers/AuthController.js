@@ -9,9 +9,10 @@
  */
 
 module.exports = require('waterlock').waterlocked({
- 
+
+
     register: function(req, res) {
-        //console.log("customsied!!!!!!");
+
         var params = req.params.all();
         var auth = {
                 email: params.email,
@@ -24,6 +25,28 @@ module.exports = require('waterlock').waterlocked({
                 email: params.email
             };
 
+
+        // var def = waterlock.Auth.definition,
+        //     criteria = {},
+        //     scopeKey = def.email !== undefined ? 'email' : 'username';
+
+        // var attr = {
+        //     password: params.password
+        // }
+        // attr[scopeKey] = params[scopeKey];
+        // criteria[scopeKey] = attr[scopeKey];
+
+        // waterlock.engine.findAuth(criteria, function(err, user) {
+        //     if (user)
+        //         return res.badRequest("User already exists");
+        //     else
+        //         waterlock.engine.findOrCreateAuth(criteria, attr, function(err, user) {
+        //             if (err)
+        //                 return res.badRequest(err);
+        //             delete user.password;
+        //             return res.ok(user);
+        //         });
+        // });
 
         User.create(userObj)
             .exec(function(err, user) {
