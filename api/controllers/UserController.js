@@ -147,8 +147,8 @@ module.exports = require('waterlock').actions.user({
         var params = req.params.all();
         console.log(req.params);
 
-        User.findOne({ 
-            id: req.params.userId 
+        User.findOne({
+            id: req.params.userId
         }).exec(function(err, account) {
             if (err) {
                 return res.send(err);
