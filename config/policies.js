@@ -73,9 +73,9 @@ module.exports.policies = {
 
     /**####################################################################                  
     #                                                                     #
-    #             create | find | findOne | update | delete |  message    #
+    #                    | find | findOne | update | delete |  message    #
     #                                                                     #
-    #  - admin       X       X       X         X       X          X       #
+    #  - admin               X       X         X       X          X       #
     #                                                                     #
     #  - normal              X       X                            X       #
     #                                                                     #
@@ -91,7 +91,7 @@ module.exports.policies = {
 
         findAll: ['sessionAuth'],
         findOne: ['sessionAuth'],
-        create:  ['sessionAuth'],
+        // create:  ['sessionAuth'],
         update:  ['sessionAuth'],
         message: ['sessionAuth'],
 

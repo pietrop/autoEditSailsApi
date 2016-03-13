@@ -88,8 +88,8 @@ module.exports.routes = {
 
   'GET  /user'             :  'UserController.findAll'
 ,
-  'POST /user'             :  'UserController.create'   // through req.body
-,
+  // 'POST /user'             :  'UserController.create'   // through req.body
+// ,
   'GET  /user/:userId'     :  'UserController.findOne'
 ,
   'PUT /user/:userId'      :  'UserController.update'
