@@ -140,25 +140,6 @@ module.exports = require('waterlock').actions.user({
     //     return res.send({ success: false });
     // },
 
-
-    /**
-     * `UserController.create()`  OLD VERSION
-     */
-    // create: function(req, res) {
-
-    //     User.create({
-    //         name: req.body.name,
-    //         email: req.body.email,
-    //         password: req.body.password
-    //     }).exec(function(err, msg) {
-    //         sails.log(msg);
-    //     });
-
-    //     return res.json({
-    //         success: 'user created'
-    //     });
-    // },
-
     /**
      * `UserController.findOne()`
      */
@@ -166,7 +147,9 @@ module.exports = require('waterlock').actions.user({
         var params = req.params.all();
         console.log(req.params);
 
-        User.findOne({id: req.params.userId}).exec(function(err, account) {
+        User.findOne({ 
+            id: req.params.userId 
+        }).exec(function(err, account) {
             if (err) {
                 return res.send(err);
             }
@@ -177,15 +160,6 @@ module.exports = require('waterlock').actions.user({
             return res.json(account);
         });
     },
-
-    // Media.findOne(req.param('mediaId'))
-    //          .populate('transcript')
-    //          .exec(function(err, m){
-    //              return res.json(
-    //                   m.transcript[0]
-    //              );
-
-
 
     /**
      * `UserController.findAll()`
@@ -231,7 +205,7 @@ module.exports = require('waterlock').actions.user({
      */
     delete: function(req, res) {
 
-     User.destroy({
+        User.destroy({
             id: req.params.userId
         }).exec(function(err) {
             if (err) {
