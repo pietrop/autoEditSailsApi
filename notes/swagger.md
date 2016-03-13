@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/30671160/swagger-sails-js
