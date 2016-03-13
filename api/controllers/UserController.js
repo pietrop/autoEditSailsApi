@@ -11,15 +11,15 @@
 module.exports = require('waterlock').actions.user({
 
     /*===============================================================
-    =   'GET /user/:userId :   findOne    =
+    =   'GET /user' :   findOne    =
     ================================================================*/
     
     findOne: function(req, res) {
-        var params = req.params.all();
-        console.log(req.params);
+        // var params = req.params.all();
+        // console.log('session: ' + JSON.stringify(req.session.user.id));
 
         User.findOne({
-            id: req.params.userId
+            id: req.session.user.id
         }).exec(function(err, account) {
             if (err) {
                 return res.send(err);
@@ -34,32 +34,32 @@ module.exports = require('waterlock').actions.user({
 
     /*=====  End of findOne  ======*/
 
-    /*===============================================================
-    =   'GET /user :   findAll    =
-    ================================================================*/
-    findAll: function(req, res) {
+    // /*===============================================================
+    // =   'GET /user' :   findAll    =
+    // ================================================================*/
+    // findAll: function(req, res) {
 
-        User.find().exec(function(err, users) {
-            if (err) {
-                return res.negotiate(err);
-            }
-            if (!users) {
-                return res.notFound('Could not find any user, sorry.');
-            }
-            sails.log('Found "%s"', users.email);
-            return res.json(users);
-        });
-    },
+    //      User.find().exec(function(err, users) {
+    //          if (err) {
+    //             return res.negotiate(err);
+    //         }
+    //         if (!users) {
+    //             return res.notFound('Could not find any user, sorry.');
+    //         }
+    //         sails.log('Found "%s"', users.email);
+    //         return res.json(users);
+    //     });
+    // },
 
     /*=====  End of findAll  ======*/
 
    /*===============================================================
-    =   'PUT /user/:userId :   update    =
+    =   'PUT /user' :   update    =
     ================================================================*/
     update: function(req, res) {
 
         User.update({
-                id: req.params.userId
+                id: req.session.user.id
             },
             req.body,
             function(err, users) {
@@ -78,12 +78,12 @@ module.exports = require('waterlock').actions.user({
     /*=====  End of update  ======*/
 
     /*===============================================================
-    =   'DELETE /user/:userId :   delete    =
+    =   'DELETE /user' :   delete    =
     ================================================================*/
     delete: function(req, res) {
 
         User.destroy({
-            id: req.params.userId
+            id: req.session.user.id
         }).exec(function(err) {
             if (err) {
                 return res.negotiate(err);

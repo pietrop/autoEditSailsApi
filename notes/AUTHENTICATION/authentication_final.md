@@ -1,13 +1,10 @@
-# authapp
+# AUTHENTICATION IMPLEMENTATION
 
-a [Sails](http://sailsjs.org) application for auth based on RESTful APIs.
-
+Auth based on RESTful APIs and Waterlock.js
 
 ## SET UP
 
 
-- ``sails new authApp``
-- ``cd authApp``
 - ``npm install waterlock --save``
 - ``npm install waterlock-local-auth --save``
 - ``./node_modules/.bin/waterlock generate all``
@@ -127,6 +124,62 @@ module.exports.routes = {
 ``http://localhost:1337/post/register`` POST
 
 ``http://localhost:1337/auth/login``  POST
+
+
+- Overwritten method register on AuthController with the following
+```js
+    register: function(req, res) {
+        //console.log("customsied!!!!!!");
+        var params = req.params.all();
+        var auth = {
+                email: params.email,
+                password: params.password
+            },
+            userObj = {
+                username: params.username,
+                firstname: params.firstname,
+                lastname: params.lastname,
+                email: params.email
+            };
+
+
+        User.create(userObj)
+            .exec(function(err, user) {
+                if (err) {
+                    waterlock.logger.debug(err);
+                    req.session.flash = {
+                        err: err
+                    };
+
+                    return res.json(401, { success: false });
+                }
+                req.session.user = user;
+                req.session.authenticated = true;
+                waterlock.engine.attachAuthToUser(auth, user, function(err) {
+                    if (err) {
+                        waterlock.logger.debug(err);
+                        return res.json(401, { success: false });
+                    }
+                    //user.online = true;
+                    user.save(function(err, user) {
+                        if (err) {
+                            sailsLog('err', err);
+                            return next(err);
+                        }
+
+                        user.action = "signed-up and logged-in.";
+
+                        User.publishCreate(user);
+
+                        waterlock.logger.debug('user login success');
+                        return res.ok({ success: true });
+                    });
+                });
+            });
+    }
+``` 
+
+TODO: ADD INFO ON USER ROLES AND JSON WEB TOKEN USE
 
 ### NOTES
 http://maangalabs.com/blog/2014/10/25/waterlock-easy-authentication-in-sails/
