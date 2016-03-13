@@ -166,7 +166,7 @@ module.exports = require('waterlock').actions.user({
         var params = req.params.all();
         console.log(req.params);
 
-        User.findOne({id: req.params.id}).exec(function(err, account) {
+        User.findOne({id: req.params.userId}).exec(function(err, account) {
             if (err) {
                 return res.send(err);
             }
@@ -210,7 +210,7 @@ module.exports = require('waterlock').actions.user({
     update: function(req, res) {
 
         User.update({
-                id: req.params.id
+                id: req.params.userId
             },
             req.body,
             function(err, users) {
@@ -231,8 +231,8 @@ module.exports = require('waterlock').actions.user({
      */
     delete: function(req, res) {
 
-        User.destroy({
-            id: req.params.id
+     User.destroy({
+            id: req.params.userId
         }).exec(function(err) {
             if (err) {
                 return res.negotiate(err);
