@@ -5,7 +5,7 @@
 -[ ] return all users should not work while we figure out admin
 
 -[ ]update user
-POST user -> update user details 
+POST user -> update user details
 manda al controller.
 controller prender user id per update dalla session
 session contiene user ID
@@ -46,3 +46,11 @@ http://localhost:1337/auth/login
  }
 
 http://localhost:1337/auth/logout
+
+
+<!--
+# Hooks
+Sails hooks autoEditSailsAPI/node_modules/sails/lib/hooks/blueprints/
+
+
+in index.js dove fa il binding -->
