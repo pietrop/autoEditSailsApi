@@ -81,7 +81,7 @@ module.exports = require('waterlock').actions.user({
     //     });
     // },
     // route to create user, user auth and associate them
-    // create: function(req, res) {
+    // create: function(req, res) {                  //NEW VERSION INTEGRATED IN AUTHCONTROLLER register
     //     //console.log("customsied!!!!!!");
     //     var params = req.params.all();
     //     var auth = {
@@ -142,7 +142,7 @@ module.exports = require('waterlock').actions.user({
 
 
     /**
-     * `UserController.create()`
+     * `UserController.create()`  OLD VERSION
      */
     // create: function(req, res) {
 
