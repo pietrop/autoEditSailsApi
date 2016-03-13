@@ -34,12 +34,12 @@ before(function(done) {
       var data = barrels.data;
       // console.log(JSON.stringify(data));
 
-       for(var i=0; i<data.users.length; i++){
+      //  for(var i=0; i<data.users.length; i++){
          //creating test objects from `/test/fixtures/users.json`
-         User.create(data.users[i]).exec(function (err, res) {
+         User.create(data.users).exec(function (err, res) {
           //  console.log("Created Mock User "+JSON.stringify(res)+"\n");
          });
-       }
+      //  }
 
         done(err,sails);
      });

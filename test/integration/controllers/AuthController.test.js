@@ -37,48 +37,62 @@ var mockUserRegister = {
 
 describe('AuthController', function() {
 
-
-  describe('#register()', function() {
-    //BASE CASE, when it works
-      it('should allow a user to register providing name, lastname, username, email and pswd', function (done) {
-        agent = request.agent(sails.hooks.http.app);
-          agent
-          .post("/auth/register")
-          .send(mockUserRegister)
-          .expect(200)
-          .end(function(err, res){
-            //console.log(err, res)
-            if(err) return done(err);
-            done(err)
-          });
-        });
-
-
-      // it('should not allow a user to register not providing all required details', function (done) {
-      //     request(sails.hooks.http.app)
-      //     // agent
-      //     .post("/auth/register")
-      //     .send(mockUserRegisterMissingDetails)
-      //     .expect(401)
-      //     .end(function(err, res){
-      //       //console.log(err, res)
-      //       done(err)
-      //     });
-      //   });
-
-      // it('should not allow a user to register with details of an existing user', function (done) {
-      //     // request(sails.hooks.http.app)
-      //     agent
-      //     .post("/auth/register")
-      //     .send(mockUserLogin)
-      //     .expect(401)
-      //     .end(function(err, res){
-      //       //console.log(err, res)
-      //       done(err)
-      //     });
-      //   });
-
-  });
+  // describe('#register()', function() {
+  //   //BASE CASE, when it works
+  //     it('should allow a user to register providing name, lastname, username, email and pswd', function (done) {
+  //       // console.log(sails.hooks.http.app)
+  //       agent = request.agent(sails.hooks.http.app);
+  //         agent
+  //         .post("/auth/register")
+  //         .send(mockUserRegister)
+  //         .expect(200)
+  //         .end(function(err, res){
+  //           //console.log(err, res)
+  //           if(err) return done(err);
+  //           done(err)
+  //         });
+  //       });
+  //
+  //
+  //       it('should allow a user to logout', function (done) {
+  //         // console.log(sails.hooks.http.app)
+  //         // agent = request.agent(sails.hooks.http.app);
+  //           agent
+  //           .post("/auth/logout")
+  //           .expect(200)
+  //           .end(function(err, res){
+  //             //console.log(err, res)
+  //             if(err) return done(err);
+  //             done(err)
+  //           });
+  //         });
+  //
+  //
+  //     // it('should not allow a user to register not providing all required details', function (done) {
+  //     //     request(sails.hooks.http.app)
+  //     //     // agent
+  //     //     .post("/auth/register")
+  //     //     .send(mockUserRegisterMissingDetails)
+  //     //     .expect(401)
+  //     //     .end(function(err, res){
+  //     //       //console.log(err, res)
+  //     //       done(err)
+  //     //     });
+  //     //   });
+  //
+  //     // it('should not allow a user to register with details of an existing user', function (done) {
+  //     //     // request(sails.hooks.http.app)
+  //     //     agent
+  //     //     .post("/auth/register")
+  //     //     .send(mockUserLogin)
+  //     //     .expect(401)
+  //     //     .end(function(err, res){
+  //     //       //console.log(err, res)
+  //     //       done(err)
+  //     //     });
+  //     //   });
+  //
+  // });
 
 
 // User sign/signup/login Page
@@ -86,12 +100,13 @@ describe('AuthController', function() {
     it('should allow a user to login providing  email and pswd', function (done) {
       // var agent = request.agent(sails.hooks.http.app)
       request.agent(sails.hooks.http.app)
+      // agent
         .post("/auth/login")
-        .send(mockUserLogin)
+        .send(mockUserRegister)
         .expect(200)
         .end(function(err, res) {
           // console.log(mockUserLogin)
-          console.log(res.body)
+          // console.log(res)
             // should(res.body.email).be.exactly(mockUserLogin.email);
             done(err)
         })

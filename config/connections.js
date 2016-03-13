@@ -38,7 +38,7 @@ module.exports.connections = {
  ***************************************************************************/
 
   test: {
-    adapter: 'sails-memory'
+    adapter: 'sails-disk' //sails-memory
   },
 
 
