@@ -138,7 +138,9 @@ module.exports.policies = {
         update:  ['sessionAuth'],
 
         delete:     ['isAdmin'],
-        assignUser: ['isAdmin']
+        assignUser: ['isAdmin'],
+
+        jwt: ['hasJsonWebToken']
 
     },
 

@@ -18,18 +18,21 @@ module.exports = {
         return res.ok(sails.__("This is open!"));
     },
     admin: function(req, res) {
-        return res.ok(sails.__("If you can see this you are admin."))
+        return res.ok(sails.__("If you can see this you are admin."));
+    },
+    jwt: function(req, res) {
+        return res.ok(sails.__("If you can see this you have a web token."));
     },
 
     /*=====  End of Test  ======*/
 
     /*=============================================================
-   	=   'POST /user/:userId/project'       :          create      =
-   	==============================================================*/
+    =   'POST /user/:userId/project'       :          create      =
+    ==============================================================*/
 
-   	created: function(req, res){
-   		return res.ok('Project created');
-   	},
+        created: function(req, res) {
+        return res.ok('Project created');
+    },
 
     /*=====  End of findAll  ======*/
 
@@ -37,18 +40,18 @@ module.exports = {
     =   'GET /user/:userId/project'        :          findAll     =
     ==============================================================*/
 
-    findAll: function(req, res){
-    	return res.ok('All projects listed');
+    findAll: function(req, res) {
+        return res.ok('All projects listed');
     },
 
     /*=====  End of findAll  ======*/
 
     /*=============================================================
-   	=   'GET /user/:userId/project/:projectId'  :     findOne     =
-   	==============================================================*/
-    
-    findOne: function(req, res){
-    	return res.ok('Project listed');
+    =   'GET /user/:userId/project/:projectId'  :     findOne     =
+    ==============================================================*/
+
+    findOne: function(req, res) {
+        return res.ok('Project listed');
     },
 
 
@@ -58,19 +61,19 @@ module.exports = {
     =   'PUT /user/:userId/project/:projectId'    :    update     =
     ==============================================================*/
 
-    update: function(req, res){
-    	return res.ok('Project updated');
+    update: function(req, res) {
+        return res.ok('Project updated');
     },
 
     /*=====  End of update  ======*/
 
 
     /*=============================================================
-   	=  'DELETE /user/:userId/project/:projectId'    :   delete    =
-   	==============================================================*/
+    =  'DELETE /user/:userId/project/:projectId'    :   delete    =
+    ==============================================================*/
 
-   	delete: function(req, res){
-    	return res.ok('Project deleted');
+    delete: function(req, res) {
+        return res.ok('Project deleted');
     },
 
     /*=====  End of delete  ======*/

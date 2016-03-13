@@ -87,20 +87,16 @@ module.exports = require('waterlock').actions.user({
         var auth = {
             email: params.email,
             password: params.password
+        },
+        userObj = {
+            username: params.username,
+            firstname: params.firstname,
+            lastname: params.lastname,
+            email: params.email
         };
-        // userObj = {
-        //     username: params.username,
-        //     firstname: params.firstname,
-        //     lastname: params.lastname,
-        //     email: params.email
-        // };
 
 
-        User.create({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
-            })
+        User.create(userObj)
             .exec(function(err, user) {
                 if (err) {
                     waterlock.logger.debug(err);
@@ -170,7 +166,7 @@ module.exports = require('waterlock').actions.user({
         var params = req.params.all();
         console.log(req.params);
 
-        User.findOne(req.params).exec(function(err, account) {
+        User.findOne({id: req.params.id}).exec(function(err, account) {
             if (err) {
                 return res.send(err);
             }
@@ -220,7 +216,8 @@ module.exports = require('waterlock').actions.user({
             function(err, users) {
                 // Error handling
                 if (err) {
-                    return console.log(err);
+                    console.log(err);
+                    return res.send(err);
                     // Updated users successfully!
                 } else {
                     console.log("Users updated:", users);

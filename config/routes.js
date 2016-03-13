@@ -51,6 +51,8 @@ module.exports.routes = {
 'GET /project/open' : 'ProjectController.open',
 'GET /project/admin' : 'ProjectController.admin',
 'GET /project/restricted' : 'ProjectController.restricted',
+'GET /project/jwt' : 'ProjectController.jwt',
+
 
 /*=============================================>>>>>
 = ROUTES FOR LOGIN =
