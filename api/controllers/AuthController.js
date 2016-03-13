@@ -9,11 +9,7 @@
  */
 
 module.exports = require('waterlock').waterlocked({
-    /* e.g.
-      action: function(req, res){
-
-      }
-    */
+ 
     register: function(req, res) {
         //console.log("customsied!!!!!!");
         var params = req.params.all();
@@ -37,14 +33,14 @@ module.exports = require('waterlock').waterlocked({
                         err: err
                     };
 
-                    return res.json(401,{ success: false });
+                    return res.json(401, { success: false });
                 }
                 req.session.user = user;
                 req.session.authenticated = true;
                 waterlock.engine.attachAuthToUser(auth, user, function(err) {
                     if (err) {
                         waterlock.logger.debug(err);
-                        return res.json(401,{ success: false });
+                        return res.json(401, { success: false });
                     }
                     //user.online = true;
                     user.save(function(err, user) {
