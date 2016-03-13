@@ -89,10 +89,12 @@ module.exports = require('waterlock').actions.user({
                     return res.negotiate(err);
                 }
                 sails.log('Deleted user, if it existed.');
-                req.session.destroy(function(err) {
-                    if (err)
-                        return res.negotiate(err);
-                });
+                // req.session.destroy(function(err) {
+                //     if (err)
+                //         return res.negotiate(err);
+                //     res.redirect('/');
+                // });
+                req.logOut();
                 return res.json({
                     success: 'Deleted user, if it existed.'
                 });

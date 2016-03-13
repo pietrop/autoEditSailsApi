@@ -18,6 +18,7 @@ session contiene user ID
 DELETE user -> session needs to be destroyed after delete (or redirect on simething like: 'POST auth/logout' ??) 
 
 - **{ dev notes: _add a req.session.destroy(callback);_ It might have risen some issues. See the routes followed:**
+possible fix from [http://miscposts1.blogspot.co.uk/2014/09/sailsjs-user-authentication.html] use ``req.logOut();``
 
 **Error:**
 
