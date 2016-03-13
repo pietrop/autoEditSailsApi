@@ -46,11 +46,3 @@ http://localhost:1337/auth/login
  }
 
 http://localhost:1337/auth/logout
-
-
-<!--
-# Hooks
-Sails hooks autoEditSailsAPI/node_modules/sails/lib/hooks/blueprints/
-
-
-in index.js dove fa il binding -->

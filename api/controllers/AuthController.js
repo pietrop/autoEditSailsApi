@@ -9,13 +9,10 @@
  */
 
 module.exports = require('waterlock').waterlocked({
-    /* e.g.
-      action: function(req, res){
 
-      }
-    */
+
     register: function(req, res) {
-        //console.log("customsied!!!!!!");
+
         var params = req.params.all();
         var auth = {
                 email: params.email,
@@ -29,6 +26,28 @@ module.exports = require('waterlock').waterlocked({
             };
 
 
+        // var def = waterlock.Auth.definition,
+        //     criteria = {},
+        //     scopeKey = def.email !== undefined ? 'email' : 'username';
+
+        // var attr = {
+        //     password: params.password
+        // }
+        // attr[scopeKey] = params[scopeKey];
+        // criteria[scopeKey] = attr[scopeKey];
+
+        // waterlock.engine.findAuth(criteria, function(err, user) {
+        //     if (user)
+        //         return res.badRequest("User already exists");
+        //     else
+        //         waterlock.engine.findOrCreateAuth(criteria, attr, function(err, user) {
+        //             if (err)
+        //                 return res.badRequest(err);
+        //             delete user.password;
+        //             return res.ok(user);
+        //         });
+        // });
+
         User.create(userObj)
             .exec(function(err, user) {
                 if (err) {
@@ -37,14 +56,14 @@ module.exports = require('waterlock').waterlocked({
                         err: err
                     };
 
-                    return res.json(401,{ success: false });
+                    return res.json(401, { success: false });
                 }
                 req.session.user = user;
                 req.session.authenticated = true;
                 waterlock.engine.attachAuthToUser(auth, user, function(err) {
                     if (err) {
                         waterlock.logger.debug(err);
-                        return res.json(401,{ success: false });
+                        return res.json(401, { success: false });
                     }
                     //user.online = true;
                     user.save(function(err, user) {

@@ -95,7 +95,8 @@ module.exports.policies = {
         update:  ['sessionAuth'],
         message: ['sessionAuth'],
 
-        delete:  ['isAdmin'],
+        // delete:  ['isAdmin'],
+        delete:  ['sessionAuth']
 
     },
 
