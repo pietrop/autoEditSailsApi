@@ -6,7 +6,7 @@ var users = require("../../fixtures/users.json")
 var agent;
 // var mockUserLogin = users[0];
 var mockUserLogin ={
-   "name":"LongJon",
+   "firstname":"LongJon",
    "lastname":"Silver",
    "email":"LongJon@Silver.com",
    "password":"TreasureIsland",
@@ -19,7 +19,7 @@ var fakeMockUserLogin = {
 };
 
 var mockUserRegister = {
-   "name":"David",
+   "firstname":"David",
    "lastname":"Gordon",
    "email":"David@gordon.com",
    "password":"jazzGordonSuperDude",
@@ -27,7 +27,7 @@ var mockUserRegister = {
  }
 
  var mockUserRegisterMissingDetails = {
-    "name":"David",
+    "firstname":"David",
     "lastname":"Gordon",
     "email":"",
     "password":"jazzGordonSuperDude",
