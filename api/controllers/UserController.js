@@ -149,6 +149,9 @@ module.exports = require('waterlock').actions.user({
                 return res.redirect('/');
             }
 
+
+            console.log('request -----------------------------')
+
             // req.session.user.id = null;
             // req.session.user.auth = null;
 
@@ -177,8 +180,8 @@ module.exports = require('waterlock').actions.user({
                             // req.session.user.email = null;
                             // req.session.user.password = null;
                             req.session = null;
-                            // req.session.user.enabled = false;
-                            // req.session.authenticated = false;
+                            req.session.user.enabled = false;
+                            req.session.authenticated = false;
                             console.log(req.session);
                             // delete(req.session.user);
                         });
