@@ -25,29 +25,6 @@ module.exports = require('waterlock').waterlocked({
                 email: params.email
             };
 
-
-        // var def = waterlock.Auth.definition,
-        //     criteria = {},
-        //     scopeKey = def.email !== undefined ? 'email' : 'username';
-
-        // var attr = {
-        //     password: params.password
-        // }
-        // attr[scopeKey] = params[scopeKey];
-        // criteria[scopeKey] = attr[scopeKey];
-
-        // waterlock.engine.findAuth(criteria, function(err, user) {
-        //     if (user)
-        //         return res.badRequest("User already exists");
-        //     else
-        //         waterlock.engine.findOrCreateAuth(criteria, attr, function(err, user) {
-        //             if (err)
-        //                 return res.badRequest(err);
-        //             delete user.password;
-        //             return res.ok(user);
-        //         });
-        // });
-
         User.create(userObj)
             .exec(function(err, user) {
                 if (err) {
@@ -81,6 +58,46 @@ module.exports = require('waterlock').waterlocked({
                     });
                 });
             });
+    },
+
+    login: function(req, res) {
+
+        var scope = require('../../node_modules/waterlock-local-auth/lib/scope')(waterlock.Auth, waterlock.engine);
+        var params = req.params.all();
+
+        if (typeof params[scope.type] === 'undefined' || typeof params.password !== 'string') {
+            waterlock.cycle.loginFailure(req, res, null, { error: 'Invalid ' + scope.type + ' or password' });
+        } else {
+            var pass = params.password;
+            scope.getUserAuthObject(params, req, function(err, user) {
+                if (err) {
+                    if (err.code === 'E_VALIDATION') {
+                        return res.status(400).json(err);
+                    } else {
+                        return res.serverError(err);
+                    }
+                }
+                // ===============================>>>>>>>>
+                if (user) {
+                    if (user.auth) {
+                        if (bcrypt.compareSync(pass, user.auth.password)) {
+                            waterlock.cycle.loginSuccess(req, res, user);
+                        } else {
+                            waterlock.cycle.loginFailure(req, res, user, { error: 'Invalid ' + scope.type + ' or password' });
+                        }
+                    }
+                } else {
+                    //TODO redirect to register
+                    try{
+                     waterlock.cycle.loginFailure(req, res, null, { error: 'user not found' });
+                    }catch(err){
+                        return res.json(401, err);
+                    }
+                    // return res.json(401, {error: 'user not found'});
+                   
+                }
+            });
+        }
     }
 
 });

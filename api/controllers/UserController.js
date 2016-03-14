@@ -150,7 +150,6 @@ module.exports = require('waterlock').actions.user({
                     User.unsubscribe(req, record);
                     User.retire(record);
                 }
-
                 //======================>>>>>>>
                 req.session.destroy(function(err) {
                     if (err) return res.negotiate(err);
