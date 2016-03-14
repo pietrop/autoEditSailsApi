@@ -59,6 +59,7 @@ module.exports = require('waterlock').actions.user({
     /*===============================================================
      =   'PUT /user' :   update    =
      ================================================================*/
+
     update: function(req, res) {
 
         // Look up the model
@@ -137,14 +138,23 @@ module.exports = require('waterlock').actions.user({
     /*===============================================================
     =   'DELETE /user' :   delete    =
     ================================================================*/
+
     delete: function(req, res) {
+        if (!req.session.user.id) return res.redirect('/');
 
         User.findOne({ id: req.session.user.id }).exec(function foundRecord(err, record) {
             if (err) return res.serverError(err);
-            if (!record) return res.notFound('No record found with the specified `id`.');
+            if (!record) {
+                sails.log('No record found with the specified `id`.');
+                return res.redirect('/');
+            }
+
+            // req.session.user.id = null;
+            // req.session.user.auth = null;
 
             User.update({
-                    id: req.session.user.id
+                    id: req.session.user.id,
+                    auth: req.session.user.auth
                 }, { enabled: false },
                 function(err, users) {
                     // Error handling
@@ -162,19 +172,77 @@ module.exports = require('waterlock').actions.user({
                                 User.unsubscribe(req, record);
                                 User.retire(record);
                             }
-                            
-                             delete(req.session.user);
+                            // req.session.user.auth = null;
+                            req.session.user.id = null;
+                            // req.session.user.email = null;
+                            // req.session.user.password = null;
+                            req.session = null;
+                            // req.session.user.enabled = false;
+                            // req.session.authenticated = false;
+                            console.log(req.session);
+                            // delete(req.session.user);
                         });
-                        sails.log(req.session.user);
+                        console.log("////////sails.log req.session.suer")
+                        sails.log(req.session);
                         return res.json({
                             success: 'Deleted user, if it existed.'
                         });
+                        // return res.redirect('/');
                     }
                 });
+
+            //        User.update({
+            //     id: req.param('id')
+            // }, {
+            //     deleted: true
+            // }, function(err, removedUser) {
+
+            //     if (err) return res.negotiate(err);
+            //     if (removedUser.length === 0) {
+            //         return res.notFound();
+            //     }
+            //     req.session.userId = null; //#A
+            //     return res.ok();
+            // });
+
+
         });
-    }
+    },
 
     /*=====  End of delete  ======*/
+    /*======================================
+    =            Remove Profile            =
+    ======================================*/
+
+    removeProfile: function(req, res) {
+        User.update({
+            id: req.param('id')
+        }, {
+            deleted: true
+        }, function(err, removedUser) {
+
+            if (err) return res.negotiate(err);
+            if (removedUser.length === 0) {
+                return res.notFound();
+            }
+            req.session.userId = null; //#A
+            return res.ok();
+        });
+    },
+
+    /*=====  End of Remove Profile  ======*/
+
+    restoreProfile: function(req, res) {
+
+        User.update({
+            id: user.id
+        }, {
+            deleted: false
+        }).exec(function(err, updatedUser) {
+            req.session.userId = user.id; //#B
+            return res.json(updatedUser);
+        });
+    }
 
 
 });

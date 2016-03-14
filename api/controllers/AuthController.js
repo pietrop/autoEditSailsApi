@@ -100,5 +100,20 @@ module.exports = require('waterlock').waterlocked({
             });
         }
     }
+    // ,
+
+    // logout: function(req, res) {
+    //     if (!req.session.userId) return res.redirect('/'); 
+    //     User.findOne(req.session.userId, function foundUser(err, user) { 
+    //         if (err) return res.negotiate(err);
+    //         if (!user) { //C
+    //             sails.log.verbose('Session refers to a user who no longer exists.');
+    //             return res.redirect('/');
+    //         }
+    //         req.session.userId = null; 
+    //         return res.redirect('/'); 
+    //     });
+    // },
+
 
 });
