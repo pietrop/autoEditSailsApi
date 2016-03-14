@@ -6,11 +6,8 @@ var users = require("../../fixtures/users.json")
 var agent;
 // var mockUserLogin = users[0];
 var mockUserLogin ={
-   "firstname":"LongJon",
-   "lastname":"Silver",
    "email":"LongJon@Silver.com",
-   "password":"TreasureIsland",
-   "username": "Test2"
+   "password":"TreasureIsland"
  };
 
 var fakeMockUserLogin = {
@@ -102,13 +99,16 @@ describe('AuthController', function() {
       request.agent(sails.hooks.http.app)
       // agent
         .post("/auth/login")
-        .send(mockUserRegister)
+        // .set('Accept', 'text/plain')
+        .send(mockUserLogin)
         .expect(200)
+        // .expect('Content-Type', 'application/json')
         .end(function(err, res) {
+          console.log("res: "+JSON.stringify(res));
           // console.log(mockUserLogin)
           // console.log(res)
             // should(res.body.email).be.exactly(mockUserLogin.email);
-            done(err)
+            return done(err)
         })
     });
 
