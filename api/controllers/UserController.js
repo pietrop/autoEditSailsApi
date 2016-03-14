@@ -66,7 +66,7 @@ module.exports = require('waterlock').actions.user({
 
         // Locate and validate the required `id` parameter.
         var pk = { id: req.session.user.id };
-      
+
         // Create `values` object (monolithic combination of all parameters)
         // But omit the blacklisted params (like JSONP callback param, etc.)
         var values = actionUtil.parseValues(req);
