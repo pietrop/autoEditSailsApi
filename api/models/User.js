@@ -10,9 +10,10 @@ module.exports = {
 
     attributes: require('waterlock').models.user.attributes({
         username: {
-            type: "string",
+            type: "string"
+            // ,
             // required:true,
-            unique: true
+            // unique: true
         },
         //Password is not needed here
         //password: {
@@ -30,10 +31,11 @@ module.exports = {
                 // required: true
         },
         email: {
-            type: "string",
-            email: true,
+            type: "string"
+            // ,
+            // email: true,
             // required: true,
-            unique: true
+            // unique: true
         },
         jsonWebTokens: {
             collection: 'jwt',
