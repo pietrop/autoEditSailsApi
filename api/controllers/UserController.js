@@ -66,7 +66,7 @@ module.exports = require('waterlock').actions.user({
 
         // Locate and validate the required `id` parameter.
         var pk = { id: req.session.user.id };
-      
+
         // Create `values` object (monolithic combination of all parameters)
         // But omit the blacklisted params (like JSONP callback param, etc.)
         var values = actionUtil.parseValues(req);
@@ -143,23 +143,36 @@ module.exports = require('waterlock').actions.user({
             if (err) return res.serverError(err);
             if (!record) return res.notFound('No record found with the specified `id`.');
 
-            User.destroy({ id: req.session.user.id }).exec(function destroyedRecord(err) {
-                if (err) return res.negotiate(err);
+            User.update({
+                    id: req.session.user.id
+                }, { enabled: false },
+                function(err, users) {
+                    // Error handling
+                    if (err) {
+                        console.log(err);
+                        return res.send(err);
+                        // Updated users successfully!
+                    } else {
+                        console.log("Users updated:", users);
 
-                if (req.isSocket) {
-                    User.unsubscribe(req, record);
-                    User.retire(record);
-                }
-                //======================>>>>>>>
-                req.session.destroy(function(err) {
-                    if (err) return res.negotiate(err);
+                        User.destroy({ id: req.session.user.id }).exec(function destroyedRecord(err) {
+                            if (err) return res.negotiate(err);
+
+                            if (req.isSocket) {
+                                User.unsubscribe(req, record);
+                                User.retire(record);
+                            }
+
+                            req.session.destroy(function(err) {
+                                if (err) return res.negotiate(err);
+                            });
+                        });
+                        sails.log(req.session.user);
+                        return res.json({
+                            success: 'Deleted user, if it existed.'
+                        });
+                    }
                 });
-                //======================>>>>>>>
-            });
-            sails.log(req.session.user);
-            return res.json({
-                success: 'Deleted user, if it existed.'
-            });
         });
     }
 

@@ -79,7 +79,6 @@ module.exports = require('waterlock').waterlocked({
                         return res.serverError(err);
                     }
                 }
-                // ===============================>>>>>>>>
                 if (user) {
                     if (user.auth) {
                         if (bcrypt.compareSync(pass, user.auth.password)) {
@@ -87,16 +86,16 @@ module.exports = require('waterlock').waterlocked({
                         } else {
                             waterlock.cycle.loginFailure(req, res, user, { error: 'Invalid ' + scope.type + ' or password' });
                         }
+                    } else {
+                        waterlock.cycle.loginFailure(req, res, null, { error: 'user not found' });
                     }
                 } else {
                     //TODO redirect to register
-                    try{
-                     waterlock.cycle.loginFailure(req, res, null, { error: 'user not found' });
-                    }catch(err){
+                    try {
+                        waterlock.cycle.loginFailure(req, res, null, { error: 'user not found' });
+                    } catch (err) {
                         return res.json(401, err);
                     }
-                    // return res.json(401, {error: 'user not found'});
-                   
                 }
             });
         }
