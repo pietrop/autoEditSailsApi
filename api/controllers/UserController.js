@@ -150,7 +150,7 @@ module.exports = require('waterlock').actions.user({
             }
 
 
-            console.log('request -----------------------------')
+            console.log(record + ' \nrequest -----------------------------' )
 
             // req.session.user.id = null;
             // req.session.user.auth = null;
@@ -168,20 +168,22 @@ module.exports = require('waterlock').actions.user({
                     } else {
                         console.log("Users updated:", users);
 
-                        User.destroy({ id: req.session.user.id }).exec(function destroyedRecord(err) {
+                        User.destroy({ id: req.session.user.id }).exec(function destroyedRecord(err, record) {
                             if (err) return res.negotiate(err);
 
                             if (req.isSocket) {
                                 User.unsubscribe(req, record);
                                 User.retire(record);
                             }
+
+                            sails.log('record==========================\n' + record + '\n===========================');
                             // req.session.user.auth = null;
-                            req.session.user.id = null;
+                            // req.session.user.id = null;
                             // req.session.user.email = null;
                             // req.session.user.password = null;
-                            req.session = null;
-                            req.session.user.enabled = false;
-                            req.session.authenticated = false;
+                            // req.session = null;
+                            // req.session.user.enabled = false;
+                            // req.session.authenticated = false;
                             console.log(req.session);
                             // delete(req.session.user);
                         });
