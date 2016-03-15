@@ -14,10 +14,28 @@
 //
 //   });
 //
-//   describe('#delete()', function() {
-//     it('should dalete a user provided the user id');
+//User delete
+// describe('#delete()', function() {
+//   it('should delete the user', function(done) {
+//     request(sails.hooks.http.app)
+//       .post("/auth/login")
+//       .send(fakeMockUserLogin)
+//       .expect(200)
+//       .end(function(err, res) {
+//         request(sails.hooks.http.app)
+//           .del("/user")
+//           .send(fakeMockUserLogin)
+//           .expect(200)
+//           .end(function(err, res) {
+//             done(err)
+//           });
 //
+//
+//         done(err)
+//       });
 //   });
+//
+// });
 //
 //
 // });
