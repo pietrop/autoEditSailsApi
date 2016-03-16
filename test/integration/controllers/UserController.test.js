@@ -1,6 +1,6 @@
 var request = require('supertest');
 var should = require('should');
-
+var expect = require('chai').expect;
 
 var fakeMockUserLogin = {
   "email": "John@Armstrong.com",
@@ -33,7 +33,10 @@ var Cookies;
 
 describe('UserController', function() {
 
-  // find one
+
+  /**
+   * Testing for find one
+   */
 
   describe('#findOne()', function() {
     it('register', registerUser());
@@ -43,8 +46,8 @@ describe('UserController', function() {
     it('should read the user details if logged in', function(done) {
       var req = request.agent(sails.hooks.http.app).get("/user");
 
-        req.cookies = Cookies;
-        req.set('Accept', 'application/json')
+      req.cookies = Cookies;
+      req.set('Accept', 'application/json')
         .expect('Content-Type', 'application/json; charset=utf-8')
         .expect(200)
         .end(function(err, res) {
@@ -64,8 +67,8 @@ describe('UserController', function() {
     it('should not read the user details if logged in with wrong credentials', function(done) {
       var req = request.agent(sails.hooks.http.app).get("/user");
 
-        req.cookies = Cookies;
-        req.set('Accept', 'application/json')
+      req.cookies = Cookies;
+      req.set('Accept', 'application/json')
         .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(403)
         .end(function(err, res) {
@@ -76,42 +79,66 @@ describe('UserController', function() {
     });
   });
 
-  /**-------------- Register test success --------------*/
-   function registerUser() {
-     return function(done) {
-       request.agent(sails.hooks.http.app)
-         .post("/auth/login")
-         .send(mockUserRegister)
-         .expect(200)
-         .end(onResponse);
 
-       function onResponse(err, res) {
-         if (err) return done(err);
-         Cookies = res.headers['set-cookie'].pop().split(';')[0];
-         return done();
-       }
-     };
-   }
+  /**
+   * Testing for update
+   */
 
-   /**-------------- Logout test success --------------*/
-    function logoutUser() {
-      return function(done) {
-        request.agent(sails.hooks.http.app)
-          .post("/auth/logout")
-          .send(fakeMockUserLogin)
-          .expect(200)
-          .end(onResponse);
+  describe('#update()', function() {
+    it('register', registerUser());
+    it('logout', logoutUser());
+    it('login', loginUser());
 
-        function onResponse(err, res) {
+    it('should change user details if logged in with right credentials', function(done) {
+      var req = request.agent(sails.hooks.http.app).put("/user")
+        .send({
+          'firstname': 'Guybrush Threepwood'
+        });
+
+      req.cookies = Cookies;
+      req.set('Accept', 'application/json')
+        .expect('Content-Type', 'application/json; charset=utf-8')
+        .expect(200)
+        .end(function(err, res) {
           if (err) return done(err);
-           Cookies = null;
-          return done();
-        }
-      };
-    }
+          expect(res.body.firstname).to.equal('Guybrush Threepwood');
+          console.log(res.body.firstname);
+          done();
+        });
+    });
+  });
 
- /**-------------- Login test success --------------*/
-  function loginUser() {
+
+  /**
+   * Testing for delete
+   */
+  describe('#delete()', function() {
+    it('register', registerUser());
+    it('logout', logoutUser());
+    it('login', loginUser());
+
+    it('should delete user if logged in with right credentials', function(done) {
+      var req = request.agent(sails.hooks.http.app).delete("/user");
+
+      req.cookies = Cookies;
+      req.set('Accept', 'application/json')
+        .expect('Content-Type', 'application/json; charset=utf-8')
+        .expect(200)
+        .end(function(err, res) {
+          if (err) return done(err);
+          done();
+        });
+    });
+
+    it('login after delete', loginDeleteUser());
+  });
+
+
+  /**
+   *    Register test success
+   */
+
+  function registerUser() {
     return function(done) {
       request.agent(sails.hooks.http.app)
         .post("/auth/login")
@@ -127,7 +154,48 @@ describe('UserController', function() {
     };
   }
 
- /**-------------- Login test wrong --------------*/
+  /**
+   *    Logout test success
+   */
+  function logoutUser() {
+    return function(done) {
+      request.agent(sails.hooks.http.app)
+        .post("/auth/logout")
+        .send(fakeMockUserLogin)
+        .expect(200)
+        .end(onResponse);
+
+      function onResponse(err, res) {
+        if (err) return done(err);
+        Cookies = null;
+        return done();
+      }
+    };
+  }
+
+  /**
+   *   Login test success
+   */
+  function loginUser() {
+    return function(done) {
+      request.agent(sails.hooks.http.app)
+        .post("/auth/login")
+        .send(fakeMockUserLogin)
+        .expect(200)
+        .end(onResponse);
+
+      function onResponse(err, res) {
+        if (err) return done(err);
+        Cookies = res.headers['set-cookie'].pop().split(';')[0];
+        return done();
+      }
+    };
+  }
+
+
+  /**
+   *  Login test wrong
+   */
   function loginWrongUser() {
     return function(done) {
       request.agent(sails.hooks.http.app)
@@ -141,9 +209,27 @@ describe('UserController', function() {
         Cookies = res.headers['set-cookie'].pop().split(';')[0];
         return done();
       }
-
     };
+  }
 
+
+  /**
+   *  Login test after delete
+   */
+  function loginDeleteUser() {
+    return function(done) {
+      request.agent(sails.hooks.http.app)
+        .post("/auth/login")
+        .send(fakeMockUserLogin)
+        .expect(403)
+        .end(onResponse);
+
+      function onResponse(err, res) {
+        if (err) return done(err);
+        Cookies = res.headers['set-cookie'].pop().split(';')[0];
+        return done();
+      }
+    };
   }
 
 });
