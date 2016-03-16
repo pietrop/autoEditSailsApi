@@ -29,17 +29,23 @@ var mockUserRegister = {
   "password": "MoonLanding"
 }
 
+var Cookies;
 
 describe('UserController', function() {
 
   // find one
 
   describe('#findOne()', function() {
+    it('register', registerUser());
+    it('logout', logoutUser());
     it('login', loginUser());
 
     it('should read the user details if logged in', function(done) {
-      request.agent(sails.hooks.http.app)
-        .get("/user")
+      var req = request.agent(sails.hooks.http.app).get("/user");
+
+        req.cookies = Cookies;
+        req.set('Accept', 'application/json')
+        .expect('Content-Type', 'application/json; charset=utf-8')
         .expect(200)
         .end(function(err, res) {
           if (err) return done(err);
@@ -50,6 +56,61 @@ describe('UserController', function() {
   });
 
 
+  describe('#findOne()', function() {
+    it('register', registerUser());
+    it('logout', logoutUser());
+    it('login_wrong', loginWrongUser());
+
+    it('should not read the user details if logged in with wrong credentials', function(done) {
+      var req = request.agent(sails.hooks.http.app).get("/user");
+
+        req.cookies = Cookies;
+        req.set('Accept', 'application/json')
+        .expect('Content-Type', 'application/json; charset=utf-8')
+        .expect(403)
+        .end(function(err, res) {
+          if (err) return done(err);
+          console.log(res.body);
+          done();
+        });
+    });
+  });
+
+  /**-------------- Register test success --------------*/
+   function registerUser() {
+     return function(done) {
+       request.agent(sails.hooks.http.app)
+         .post("/auth/login")
+         .send(mockUserRegister)
+         .expect(200)
+         .end(onResponse);
+
+       function onResponse(err, res) {
+         if (err) return done(err);
+         Cookies = res.headers['set-cookie'].pop().split(';')[0];
+         return done();
+       }
+     };
+   }
+
+   /**-------------- Logout test success --------------*/
+    function logoutUser() {
+      return function(done) {
+        request.agent(sails.hooks.http.app)
+          .post("/auth/logout")
+          .send(fakeMockUserLogin)
+          .expect(200)
+          .end(onResponse);
+
+        function onResponse(err, res) {
+          if (err) return done(err);
+           Cookies = null;
+          return done();
+        }
+      };
+    }
+
+ /**-------------- Login test success --------------*/
   function loginUser() {
     return function(done) {
       request.agent(sails.hooks.http.app)
@@ -60,6 +121,24 @@ describe('UserController', function() {
 
       function onResponse(err, res) {
         if (err) return done(err);
+        Cookies = res.headers['set-cookie'].pop().split(';')[0];
+        return done();
+      }
+    };
+  }
+
+ /**-------------- Login test wrong --------------*/
+  function loginWrongUser() {
+    return function(done) {
+      request.agent(sails.hooks.http.app)
+        .post("/auth/login")
+        .send(fakeMockUserLogin)
+        .expect(403)
+        .end(onResponse);
+
+      function onResponse(err, res) {
+        if (err) return done(err);
+        Cookies = res.headers['set-cookie'].pop().split(';')[0];
         return done();
       }
 
@@ -68,21 +147,9 @@ describe('UserController', function() {
   }
 
 });
-// describe('#findOne()', function() {
-//   it('should read the user details if logged in', function(done) {
-//     request.agent(sails.hooks.http.app)
-//       .get("/user")
-//       .send(mockUserRegister)
-//       .expect(403)
-//       .end(function(err, res) {
-//         //console.log(err, res)
-//         done(err)
-//       });
-//   });
-// });
 
 
-// ===============
+// =============== example through JWT ==================
 // var token = null;
 //
 //   before(function(done) {
@@ -101,7 +168,7 @@ describe('UserController', function() {
 //       .expect(200, done);
 //   });
 
-
+// =============== END example through JWT ==================
 
 //   //User profile/account page
 //   describe('#read()', function() {
