@@ -33,11 +33,9 @@ var Cookies;
 
 describe('UserController', function() {
 
-
   /**
    * Testing for find one
    */
-
   describe('#findOne()', function() {
     it('register', registerUser());
     it('logout', logoutUser());
@@ -84,7 +82,6 @@ describe('UserController', function() {
   /**
    * Testing for update
    */
-
   describe('#update()', function() {
     it('register', registerUser());
     it('logout', logoutUser());
@@ -159,7 +156,6 @@ describe('UserController', function() {
   });
 
   describe('#delete()', function() {
-    // it('register', registerUser());
     it('logout', logoutUser());
     it('login wrong', loginWrongUser());
 
@@ -168,21 +164,18 @@ describe('UserController', function() {
 
       req.cookies = Cookies;
       req.set('Accept', 'application/json')
-      .expect('Content-Type', 'text/html; charset=utf-8')
-      .expect(403)
+        .expect('Content-Type', 'text/html; charset=utf-8')
+        .expect(403)
         .end(function(err, res) {
           if (err) return done(err);
           done();
         });
     });
-
-    // it('login after delete', loginDeleteUser());
   });
 
   /**
    *    Register test success
    */
-
   function registerUser() {
     return function(done) {
       request.agent(sails.hooks.http.app)
