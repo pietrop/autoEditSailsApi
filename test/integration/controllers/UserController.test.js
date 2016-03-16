@@ -159,7 +159,7 @@ describe('UserController', function() {
   });
 
   describe('#delete()', function() {
-    it('register', registerUser());
+    // it('register', registerUser());
     it('logout', logoutUser());
     it('login', loginWrongUser());
 
