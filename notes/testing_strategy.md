@@ -46,9 +46,14 @@ Remember: thin controllers.
 ### Testing model methods
 (?) tbc
 
-### Testing utilities and other modules 
+### Testing utilities and other modules
 ( defining interface input / output for test cases)
 ( components folder?
 Ie srt to hyper-transcript
 To EDL
 Etc...)
+
+
+### Resources
+
+https://developmentnow.com/2015/02/05/make-your-node-js-api-bulletproof-how-to-test-with-mocha-chai-and-supertest/
