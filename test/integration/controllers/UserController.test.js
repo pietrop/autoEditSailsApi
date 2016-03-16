@@ -56,6 +56,7 @@ describe('UserController', function() {
           done();
         });
     });
+    it('logout', logoutUser());
   });
 
 
@@ -106,6 +107,30 @@ describe('UserController', function() {
           done();
         });
     });
+    it('logout', logoutUser());
+  });
+
+
+  describe('#update()', function() {
+    it('register', registerUser());
+    it('logout', logoutUser());
+    it('login wrong', loginWrongUser());
+
+    it('should not change user details if not logged in with right credentials', function(done) {
+      var req = request.agent(sails.hooks.http.app).put("/user")
+        .send({
+          'firstname': 'Guybrush Threepwood'
+        });
+
+      req.cookies = Cookies;
+      req.set('Accept', 'application/json')
+        .expect('Content-Type', 'text/html; charset=utf-8')
+        .expect(403)
+        .end(function(err, res) {
+          if (err) return done(err);
+          done();
+        });
+    });
   });
 
 
@@ -133,6 +158,26 @@ describe('UserController', function() {
     it('login after delete', loginDeleteUser());
   });
 
+  describe('#delete()', function() {
+    it('register', registerUser());
+    it('logout', logoutUser());
+    it('login', loginWrongUser());
+
+    it('should not delete the user if not logged in with right credentials', function(done) {
+      var req = request.agent(sails.hooks.http.app).delete("/user");
+
+      req.cookies = Cookies;
+      req.set('Accept', 'application/json')
+      .expect('Content-Type', 'text/html; charset=utf-8')
+      .expect(403)
+        .end(function(err, res) {
+          if (err) return done(err);
+          done();
+        });
+    });
+
+    // it('login after delete', loginDeleteUser());
+  });
 
   /**
    *    Register test success
