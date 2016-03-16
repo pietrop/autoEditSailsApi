@@ -1,3 +1,11 @@
+/**
+ * AuthController.test.js
+ *
+ * @module      :: Controller Testing
+ * @description ::  Tests the Auth Controller
+ *
+ */
+
 var request = require('supertest');
 var should = require('should');
 
@@ -34,6 +42,9 @@ var mockUserRegister = {
 
 describe('AuthController', function() {
 
+  /**
+   * Testing for register
+   */
   describe('#register()', function() {
     it('should allow a user to register providing name, lastname, email and pswd', function(done) {
       request.agent(sails.hooks.http.app)
@@ -41,7 +52,6 @@ describe('AuthController', function() {
         .send(mockUserRegister)
         .expect(200)
         .end(function(err, res) {
-          //console.log(err, res)
           done(err)
         });
     });
@@ -51,7 +61,6 @@ describe('AuthController', function() {
         .send(fakeMockUserLogin)
         .expect(401)
         .end(function(err, res) {
-          //console.log(err, res)
           done(err)
         });
     });
@@ -62,13 +71,14 @@ describe('AuthController', function() {
         .send(mockUserRegister)
         .expect(401)
         .end(function(err, res) {
-          //console.log(err, res)
           done(err)
         });
     });
   });
 
-  // Auth sign/signup/login Page
+  /**
+   * Auth sign/signup/login Page
+   */
   describe('#login()', function() {
     it('should allow a user to login up providing  email and pswd', function(done) {
       request.agent(sails.hooks.http.app)
@@ -100,7 +110,9 @@ describe('AuthController', function() {
 
   });
 
-  // Auth logout
+  /**
+   * Auth logout
+   */ 
   describe('#logout()', function() {
     it('should logout the user', function(done) {
       request.agent(sails.hooks.http.app)
@@ -112,9 +124,5 @@ describe('AuthController', function() {
         });
     });
   });
-
-
-
-
 
 });

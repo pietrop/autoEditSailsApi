@@ -1,3 +1,11 @@
+/**
+ * UserController.test.js
+ *
+ * @module      :: Controller Testing
+ * @description ::  Tests the User Controller
+ *
+ */
+
 var request = require('supertest');
 var should = require('should');
 var expect = require('chai').expect;
