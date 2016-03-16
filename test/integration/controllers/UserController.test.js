@@ -152,7 +152,7 @@ describe('UserController', function() {
         });
     });
 
-    it('login after delete', loginDeleteUser());
+    it('login after delete', loginDeletedUser());
   });
 
   describe('#delete()', function() {
@@ -244,7 +244,6 @@ describe('UserController', function() {
 
       function onResponse(err, res) {
         if (err) return done(err);
-        Cookies = res.headers['set-cookie'].pop().split(';')[0];
         return done();
       }
     };
@@ -254,7 +253,7 @@ describe('UserController', function() {
   /**
    *  Login test after delete
    */
-  function loginDeleteUser() {
+  function loginDeletedUser() {
     return function(done) {
       request.agent(sails.hooks.http.app)
         .post("/auth/login")
@@ -264,7 +263,6 @@ describe('UserController', function() {
 
       function onResponse(err, res) {
         if (err) return done(err);
-        Cookies = res.headers['set-cookie'].pop().split(';')[0];
         return done();
       }
     };
