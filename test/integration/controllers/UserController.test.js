@@ -66,7 +66,7 @@ describe('UserController', function() {
 
         req.cookies = Cookies;
         req.set('Accept', 'application/json')
-        .expect('Content-Type', 'application/json; charset=utf-8')
+        .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(403)
         .end(function(err, res) {
           if (err) return done(err);
@@ -132,7 +132,7 @@ describe('UserController', function() {
     return function(done) {
       request.agent(sails.hooks.http.app)
         .post("/auth/login")
-        .send(fakeMockUserLogin)
+        .send(wrongMockUserLogin)
         .expect(403)
         .end(onResponse);
 
