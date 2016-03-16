@@ -161,7 +161,7 @@ describe('UserController', function() {
   describe('#delete()', function() {
     // it('register', registerUser());
     it('logout', logoutUser());
-    it('login', loginWrongUser());
+    it('login wrong', loginWrongUser());
 
     it('should not delete the user if not logged in with right credentials', function(done) {
       var req = request.agent(sails.hooks.http.app).delete("/user");
