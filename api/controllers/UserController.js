@@ -150,7 +150,7 @@ module.exports = require('waterlock').actions.user({
             }
 
 
-            console.log(record + ' \nrequest -----------------------------' )
+            // console.log(record + ' \nrequest -----------------------------' )
 
             // req.session.user.id = null;
             // req.session.user.auth = null;
@@ -166,7 +166,7 @@ module.exports = require('waterlock').actions.user({
                         return res.send(err);
                         // Updated users successfully!
                     } else {
-                        console.log("Users updated:", users);
+                        // console.log("Users updated:", users);
 
                         User.destroy({ id: req.session.user.id }).exec(function destroyedRecord(err, record) {
                             if (err) return res.negotiate(err);
@@ -184,10 +184,10 @@ module.exports = require('waterlock').actions.user({
                             // req.session = null;
                             // req.session.user.enabled = false;
                             // req.session.authenticated = false;
-                            console.log(req.session);
+                            // console.log(req.session);
                             // delete(req.session.user);
                         });
-                        console.log("////////sails.log req.session.suer")
+                        // console.log("////////sails.log req.session.user")
                         sails.log(req.session);
                         return res.json({
                             success: 'Deleted user, if it existed.'

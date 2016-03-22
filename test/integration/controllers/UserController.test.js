@@ -58,7 +58,7 @@ describe('UserController', function() {
         .expect(200)
         .end(function(err, res) {
           if (err) return done(err);
-          console.log(res.body);
+          // console.log(res.body);
           done();
         });
     });
@@ -80,7 +80,7 @@ describe('UserController', function() {
         .expect(403)
         .end(function(err, res) {
           if (err) return done(err);
-          console.log(res.body);
+          // console.log(res.body);
           done();
         });
     });
@@ -108,7 +108,7 @@ describe('UserController', function() {
         .end(function(err, res) {
           if (err) return done(err);
           expect(res.body.firstname).to.equal('Guybrush Threepwood');
-          console.log(res.body.firstname);
+          // console.log(res.body.firstname);
           done();
         });
     });
@@ -144,7 +144,9 @@ describe('UserController', function() {
    */
   describe('#delete()', function() {
     it('register', registerUser());
+
     it('logout', logoutUser());
+
     it('login', loginUser());
 
     it('should delete user if logged in with right credentials', function(done) {
@@ -165,6 +167,7 @@ describe('UserController', function() {
 
   describe('#delete()', function() {
     it('logout', logoutUser());
+
     it('login wrong', loginWrongUser());
 
     it('should not delete the user if not logged in with right credentials', function(done) {
