@@ -8,9 +8,7 @@
 
 var request = require('supertest');
 var should = require('should');
-
 // var users = require("../../fixtures/users.json")
-
 // var mockUserLogin = users[0];
 
 var mockUserRegister = {
@@ -21,6 +19,7 @@ var mockUserRegister = {
 }
 
 var wrongMockUserRegister = {
+  "firstname": "",
   "lastname": "Armstrong",
   "email": "John@Armstrong.com",
   "password": "MoonLanding"
@@ -65,17 +64,17 @@ describe('AuthController', function() {
         });
     });
 
-    // it('should not allow a user to register not providing all required details', function(done) {
-    //   request.agent(sails.hooks.http.app)
-    //     .post("/auth/register")
-    //     .send(wrongMockUserRegister)
-    //     .expect(401)
-    //     .end(function(err, res) {
-    //
-    //       console.log(res.body.success) // { success: false }
-    //       done(err)
-    //     });
-    // });
+    it('should not allow a user to register not providing all required details', function(done) {
+      request.agent(sails.hooks.http.app)
+        .post("/auth/register")
+        .send(wrongMockUserRegister)
+        .expect(401)
+        .end(function(err, res) {
+
+          console.log(res.body.success) // { success: false }
+          done(err)
+        });
+    });
 
     // it('should not register the same user twice', function(done) {
     //   request.agent(sails.hooks.http.app)
